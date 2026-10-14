@@ -1,0 +1,11 @@
+from pathlib import Path
+p=Path('dist/assets')
+def svg(name,body,w=32,h=32):
+ (p/(name+'.svg')).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" shape-rendering="crispEdges">{body}</svg>')
+svg('mascot','<path fill="#ff8758" d="M8 3h16v3h4v5h3v13h-5v5h-6v-5h-8v5H6v-5H1V11h3V6h4z"/><path fill="#ffd79a" d="M8 6h13v3H8zM4 11h3v10H4z"/><path fill="#252427" d="M8 12h5v7H8zm11 0h5v7h-5zM13 21h6v3h-6z"/><path fill="#fff4da" d="M9 12h2v3H9zm11 0h2v3h-2z"/>')
+svg('mad','<path fill="#f37855" d="M8 3h16v3h4v5h3v13h-5v5h-6v-5h-8v5H6v-5H1V11h3V6h4z"/><path fill="#252427" d="M7 10h4v3h4v3h-4v3H8v-5H7zm18 0h-4v3h-4v3h4v3h3v-5h1zM12 22h8v3h-8z"/>')
+svg('gameboy','<path fill="#3e3e48" d="M5 1h23v28h-4v3H5z"/><path fill="#d3cfc0" d="M3 0h23v27h-4v3H3z"/><path fill="#ece7d6" d="M4 1h2v27H4z"/><path fill="#60626c" d="M6 3h17v13H6z"/><path fill="#9eac75" d="M9 5h12v9H9z"/><path fill="#354d3a" d="M11 6h2v2h-2zm4 0h4v2h-4zm-3 5h6v1h-6z"/><path fill="#292b37" d="M8 18h3v3h3v3h-3v3H8v-3H5v-3h3z"/><path fill="#9b395b" d="M19 19h3v3h-3zm-4 4h3v3h-3z"/><path fill="#8a877f" d="M16 28h2v1h-2zm3-1h2v1h-2z"/>',32,34)
+svg('heart','<path fill="#501c28" d="M3 4h9v3h5V4h9v3h4v12h-4v4h-4v4h-4v4h-5v-4H9v-4H5v-4H1V7h2z"/><path fill="#ed5d52" d="M4 4h8v3h5V4h8v3h4v10h-4v4h-4v4h-4v4h-4v-4H9v-4H5v-4H2V7h2z"/><path fill="#ffa27b" d="M5 7h6v3H7v5H4V9h1z"/><path fill="#b73647" d="M25 9h3v8h-4v4h-4v4h-4v3h-3v-4h4v-4h4v-4h4z"/>')
+svg('star','<path fill="#83612f" d="M13 1h5v8h4v3h9v6h-6v5h-4v8h-6v-5H9v3H3v-8H0v-8h10V8h3z"/><path fill="#f5cf75" d="M13 0h4v8h4v4h9v4h-7v5h-4v8h-4v-7H9v4H4v-7H1v-5h10V8h2z"/><path fill="#fff3bb" d="M13 4h3v8h-3v3H6v-2h6z"/>')
+svg('planet','<path fill="#969ab7" d="M13 4h12v3h4v4h3v12h-4v4H16v-3h-5V11h2z"/><path fill="#cbc0c8" d="M15 5h9v3h5v3H14z"/><path fill="#767798" d="M12 14h18v4H12zm4 7h14v3H16z"/><path fill="#e0b684" d="M33 9h6v7h-4v4h-7v4H17v4H5v-3H0v-6h6v-4h5v4H7v3H4v2h10v-3h11v-4h8v-3h3v-2h-3z"/><path fill="#f6d1a0" d="M4 22h10v-3h11v-3h7v3h-6v3H16v3H4z"/>',40,32)
+svg('computer','<path fill="#535762" d="M4 1h26v21H19v4h12v5H1v-5h12v-4H4z"/><path fill="#d0c9b3" d="M2 0h26v20H2zM11 20h7v5h-7zM0 25h29v4H0z"/><path fill="#eee0c4" d="M3 1h24v2H3z"/><path fill="#303d39" d="M5 4h20v12H5z"/><path fill="#c3d591" d="M7 6h2v2h2v2H9v2H7v-2h2V8H7zm6 6h7v1h-7z"/><path fill="#989681" d="M4 26h18v1H4zm18-8h3v1h-3z"/>')

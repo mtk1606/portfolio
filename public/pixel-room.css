@@ -1,0 +1,20 @@
+/* Standalone experiment. Existing After Hours does not load this sheet. */
+body.pixel-preview{background:#08090b;color:#eee5cb;font-family:var(--mono)}
+body.pixel-preview #room-canvas{image-rendering:pixelated;image-rendering:crisp-edges;filter:none}
+body.pixel-preview header{background:linear-gradient(#08090be0,transparent);padding-top:25px}
+body.pixel-preview header h1{font:400 clamp(30px,4vw,48px)/1.1 var(--mono);letter-spacing:-.06em;text-shadow:3px 3px #08090b}
+body.pixel-preview header small{color:#e9a365;letter-spacing:.12em}body.pixel-preview header p{color:#c2c9c6;max-width:360px}
+body.pixel-preview button,body.pixel-preview select,body.pixel-preview input{font-family:var(--mono);border-radius:0!important;box-shadow:none}
+body.pixel-preview footer{background:linear-gradient(transparent,#08090bf5);padding-top:30px}
+body.pixel-preview #panel{background:#11151bf5;border:2px solid #806246;box-shadow:5px 5px 0 #08090b;border-radius:0;padding:22px}
+body.pixel-preview #panel h2,body.pixel-preview #chess-status{font-family:var(--mono);color:#eee5cb;letter-spacing:-.04em}
+body.pixel-preview #panel p,body.pixel-preview #panel small{color:#c2c9c6}
+body.pixel-preview #panel summary,body.pixel-preview #panel label{color:#eee5cb}
+body.pixel-preview #panel input,body.pixel-preview #panel select{background:#1b222a;color:#eee5cb;border:1px solid #806246;accent-color:#e9a365}
+body.pixel-preview button:hover,body.pixel-preview button[aria-pressed=true]{color:#f3c792}
+body.pixel-preview .record-sleeve{background:#283540;border:2px solid #806246;border-radius:0;transform:none}
+body.pixel-preview .velvet-sleeve{background:#49382a}
+body.pixel-preview #room-arrival{background:#08090b;font-family:var(--mono)}
+body.pixel-preview .universe-back{border:1px solid #806246;background:#11151bdd;padding:10px 14px;font-size:13px}
+body.pixel-preview #hint{font-size:14px;color:#eee5cb}
+@media(max-width:650px){body.pixel-preview header p{max-width:190px;font-size:12px}body.pixel-preview .universe-back{font-size:11px;padding:8px}body.pixel-preview header h1{font-size:30px}body.pixel-preview #panel{padding:16px}}

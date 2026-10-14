@@ -1,0 +1,44 @@
+@font-face{font-family:MK Terminal;src:url('/assets/fonts/mk-terminal.woff') format('woff');font-display:swap}
+@font-face{font-family:MK Editorial;src:url('/assets/fonts/mk-editorial.woff') format('woff');font-display:swap}
+:root{--mono:'MK Terminal','Courier New',monospace;--serif:'MK Editorial',Georgia,serif}
+body{font-size:16px}
+body button,body select,body label,body summary,body .mono,body .eyebrow,body .quick-route,body header nav,body footer,body .exhibit-link{font-family:var(--mono);font-size:14px;line-height:1.5}
+body button,body select,body summary{min-height:44px}
+body small,body .eyebrow,body .hero-top,body .hero-foot,body .exhibit header small,body .slip-heading,body .notebook-tag,body .notebook-spine,body .case-stamp{font-family:var(--mono);font-size:12px;line-height:1.6;letter-spacing:.06em}
+body .header-controls button,body .identity span,body header nav,body .line-link,body .quick-route a,body .exhibit-link,body .contact-bottom,body .research-notebook nav button,body .notebook-footer,body .notebook-footer button{font-family:var(--mono);font-size:14px}
+body .hero-intro p,body .exhibit p,body dialog p,body dialog dd,body .notebook-leaf dd,body .experience-case dd{font-size:16px;line-height:1.8}
+body .exhibit h3{font-size:24px}
+body .notes-body h2,body .about h2,body .contact h2,body .threshold-copy p,body #universe-welcome p{font-family:var(--serif);font-weight:400}
+body .threshold-copy p{font-size:clamp(24px,3vw,42px);line-height:1.3}
+#threshold .threshold-top,#threshold .threshold-shortcuts a,#threshold #skip-intro,#threshold #intro-sound,#threshold #journey-status,#threshold .render-quality{font:14px/1.5 var(--mono)}
+#threshold #enter-universe{font:18px/1.5 var(--mono);padding:16px 28px}
+body dialog h2{font-family:var(--serif);line-height:1.25}
+body .decision-slip p,body .decision-slip small,body .artifact-record p,body .ledger-demo p,body .ledger-demo label{font-size:15px!important}
+body .trace-stages button,body .trace-stages button span,body .trace-navigation button,body .artifact-record table,body .research-notebook a{font-family:var(--mono);font-size:13px}
+body[data-mode]{font-family:var(--mono)}
+body[data-mode] header h1{font:400 clamp(32px,4vw,48px)/1.2 var(--serif)}
+body[data-mode] header p,body[data-mode] .universe-back,body[data-mode] #hint,body[data-mode] footer button,body[data-mode] .fallback,body[data-mode] #motion,body[data-mode] #sound,body[data-mode] #room-audio{font:14px/1.65 var(--mono)}
+body[data-mode] #hint{color:#e0d3be;max-width:850px}
+body[data-mode] #panel{width:330px}
+body[data-mode] #panel p,body[data-mode] #panel label,body[data-mode] #panel summary,body[data-mode] #panel a,body[data-mode] #panel button{font-size:15px;line-height:1.65}
+body[data-mode] #panel small,body[data-mode] header small{font-size:12px;line-height:1.6}
+body[data-mode] #panel h2,body[data-mode] #panel blockquote{font-family:var(--serif)}
+body[data-mode] #chess-status{font-size:20px;line-height:1.5}
+body[data-mode] footer nav{gap:8px 22px}
+body[data-mode] #room-audio{color:#ffd38b}
+@media(max-width:700px){body header{height:auto;min-height:100px;flex-wrap:wrap;gap:12px;padding-block:18px}body header nav{gap:14px;flex-wrap:wrap}body .header-controls{gap:16px}body .quick-route{flex-wrap:wrap;gap:14px}body footer{flex-wrap:wrap;gap:15px}body[data-mode] header{padding:18px 5vw}body[data-mode] header p{font-size:13px}body[data-mode] #panel{width:auto;left:4vw;right:4vw;max-height:var(--room-panel-height,46dvh)}body[data-mode] footer nav{flex-wrap:nowrap}#threshold .threshold-top{font-size:12px}#threshold .threshold-shortcuts{gap:6px}#threshold .threshold-shortcuts a,#threshold #skip-intro{font-size:12px}}
+
+/* Evidence stays secondary to the original artwork. */
+.project-evidence{display:block;font:13px/1.65 var(--mono);color:#bcb7a5;margin:12px 0 20px;max-width:48ch;letter-spacing:0;text-transform:none}
+.research-index button{min-width:0}.research-index button>span{white-space:normal}.research-index .project-evidence{max-width:58ch}
+body .hero-intro{font-size:18px;line-height:1.7}
+#universe-welcome{bottom:auto;top:26vh;background:linear-gradient(100deg,#090b10f5,#090b10df);border:0;border-left:1px solid #b89b70;padding:24px 58px 24px 28px;max-width:calc(100vw - 40px);width:600px;pointer-events:none}
+#universe-welcome #welcome-dismiss{pointer-events:auto}#universe-welcome>span{font:12px var(--mono);letter-spacing:.12em}#universe-welcome p{font-size:clamp(25px,3vw,36px);line-height:1.3}#universe-welcome small{font:14px/1.6 var(--mono)}
+body.arriving .hero-image{animation:portrait-arrival 2s ease-out both}
+@keyframes portrait-arrival{from{opacity:0;filter:brightness(1.6)}to{opacity:1;filter:brightness(1)}}
+.room-reading{padding:18px 0;border-block:1px solid #ad986f55;margin:20px 0}.room-reading a{display:inline-block;padding:12px 0;border-bottom:1px solid #ad986f}.room-reading blockquote{margin:16px 0;font-style:italic}.room-reading small{display:block}
+@media(max-width:700px){#universe-welcome{top:22vh;padding:20px 42px 20px 20px}body .hero-type{max-width:92%}.research-index{min-width:0}body[data-mode] #panel{overflow-y:auto;overscroll-behavior:contain}body[data-mode] footer{padding-bottom:max(16px,env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){body.arriving .hero-image{animation:none}}
+body.no-motion.arriving .hero-image{animation:none}
+
+.room-return-veil{position:fixed;inset:0;background:#080b10;z-index:1000;pointer-events:none}

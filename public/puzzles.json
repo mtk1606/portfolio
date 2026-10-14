@@ -1,0 +1,362 @@
+[
+  {
+    "id": "006fF",
+    "sourceFen": "r1b4r/pp1k2pp/2nb2q1/1B1p2B1/3p3Q/8/PPP2PPP/3RR1K1 b - - 5 17",
+    "fen": "r1b4r/pp1k2p1/2nb2qp/1B1p2B1/3p3Q/8/PPP2PPP/3RR1K1 w - - 0 18",
+    "setup": "h7h6",
+    "solver": "w",
+    "moves": [
+      "h4g4",
+      "d7c7",
+      "g5d8",
+      "h8d8",
+      "g4g6"
+    ],
+    "san": [
+      "Qg4+",
+      "Kc7",
+      "Bd8+",
+      "Rxd8",
+      "Qxg6"
+    ],
+    "rating": 1702,
+    "popularity": 96,
+    "plays": 8133,
+    "theme": "discoveredAttack",
+    "themes": [
+      "advantage",
+      "discoveredAttack",
+      "exposedKing",
+      "long",
+      "middlegame"
+    ],
+    "explanation": "Moving one piece can uncover a threat from another. Look at the lines that open after each candidate move.",
+    "url": "https://lichess.org/training/006fF",
+    "gameUrl": "https://lichess.org/mAf9SSin/black#34"
+  },
+  {
+    "id": "00DII",
+    "sourceFen": "2rr2k1/p5p1/1p5p/2pP1p1P/2q5/P4QR1/5PP1/4R1K1 b - - 3 31",
+    "fen": "2rr2k1/p5p1/1p5p/2pq1p1P/8/P4QR1/5PP1/4R1K1 w - - 0 32",
+    "setup": "c4d5",
+    "solver": "w",
+    "moves": [
+      "e1e8",
+      "g8f7",
+      "f3d5",
+      "d8d5",
+      "e8c8"
+    ],
+    "san": [
+      "Re8+",
+      "Kf7",
+      "Qxd5+",
+      "Rxd5",
+      "Rxc8"
+    ],
+    "rating": 1790,
+    "popularity": 97,
+    "plays": 3907,
+    "theme": "intermezzo",
+    "themes": [
+      "advantage",
+      "endgame",
+      "intermezzo",
+      "long"
+    ],
+    "explanation": "Before making the obvious reply, look for an in-between threat. Move order can change the outcome of an exchange.",
+    "url": "https://lichess.org/training/00DII",
+    "gameUrl": "https://lichess.org/vJnBcDxi/black#62"
+  },
+  {
+    "id": "006om",
+    "sourceFen": "1r3k2/5p1p/2p1pp2/P2n4/2r1N3/P4PK1/2R2P1P/2R5 b - - 9 29",
+    "fen": "1r3k2/5p1p/2p1pp2/P2n4/r3N3/P4PK1/2R2P1P/2R5 w - - 10 30",
+    "setup": "c4a4",
+    "solver": "w",
+    "moves": [
+      "e4c5",
+      "a4a5",
+      "c5d7",
+      "f8g7",
+      "d7b8"
+    ],
+    "san": [
+      "Nc5",
+      "Rxa5",
+      "Nd7+",
+      "Kg7",
+      "Nxb8"
+    ],
+    "rating": 1921,
+    "popularity": 95,
+    "plays": 9357,
+    "theme": "fork",
+    "themes": [
+      "crushing",
+      "endgame",
+      "fork",
+      "long",
+      "master"
+    ],
+    "explanation": "A single piece can attack two targets at once. Look for the square where the threats overlap.",
+    "url": "https://lichess.org/training/006om",
+    "gameUrl": "https://lichess.org/BMIgw1OR/black#58"
+  },
+  {
+    "id": "008lc",
+    "sourceFen": "7k/pb1qn2n/1p2R2Q/2p2p2/2Pp4/3B4/PP3PrP/4RK2 b - - 1 27",
+    "fen": "7k/pb1qn1rn/1p2R2Q/2p2p2/2Pp4/3B4/PP3P1P/4RK2 w - - 2 28",
+    "setup": "g2g7",
+    "solver": "w",
+    "moves": [
+      "h6g7",
+      "h8g7",
+      "e6e7",
+      "d7e7",
+      "e1e7"
+    ],
+    "san": [
+      "Qxg7+",
+      "Kxg7",
+      "Rxe7+",
+      "Qxe7",
+      "Rxe7+"
+    ],
+    "rating": 1974,
+    "popularity": 93,
+    "plays": 2220,
+    "theme": "attraction",
+    "themes": [
+      "attraction",
+      "crushing",
+      "exposedKing",
+      "fork",
+      "long",
+      "middlegame"
+    ],
+    "explanation": "Draw an enemy piece onto a vulnerable square, then use its new position against it.",
+    "url": "https://lichess.org/training/008lc",
+    "gameUrl": "https://lichess.org/UdZXrVA5/black#54"
+  },
+  {
+    "id": "001aK",
+    "sourceFen": "6k1/5p2/4p3/P1B5/2P4P/4Pnp1/Rb1rN3/5K2 b - - 1 33",
+    "fen": "6k1/5p2/4p3/P1B5/2P4P/4Pnp1/Rb2r3/5K2 w - - 0 34",
+    "setup": "d2e2",
+    "solver": "w",
+    "moves": [
+      "f1e2",
+      "g3g2",
+      "e3e4",
+      "f3d4",
+      "e2f2"
+    ],
+    "san": [
+      "Kxe2",
+      "g2",
+      "e4",
+      "Nd4+",
+      "Kf2"
+    ],
+    "rating": 2056,
+    "popularity": 91,
+    "plays": 974,
+    "theme": "quietMove",
+    "themes": [
+      "crushing",
+      "endgame",
+      "hangingPiece",
+      "long",
+      "quietMove"
+    ],
+    "explanation": "The critical move is not always a capture or a check. Look for a move that improves the position while leaving the opponent without a satisfactory answer.",
+    "url": "https://lichess.org/training/001aK",
+    "gameUrl": "https://lichess.org/Epr0AiEh/black#66"
+  },
+  {
+    "id": "003aS",
+    "sourceFen": "8/8/5k1p/6p1/1R4PP/1p2KP2/8/1r6 w - - 0 43",
+    "fen": "8/8/5k1p/6pP/1R4P1/1p2KP2/8/1r6 b - - 0 43",
+    "setup": "h4h5",
+    "solver": "b",
+    "moves": [
+      "b3b2",
+      "b4b6",
+      "f6e5",
+      "f3f4",
+      "g5f4"
+    ],
+    "san": [
+      "b2",
+      "Rb6+",
+      "Ke5",
+      "f4+",
+      "gxf4+"
+    ],
+    "rating": 2086,
+    "popularity": 93,
+    "plays": 396,
+    "theme": "defensiveMove",
+    "themes": [
+      "advancedPawn",
+      "crushing",
+      "defensiveMove",
+      "endgame",
+      "long",
+      "rookEndgame"
+    ],
+    "explanation": "The best move may be the one that meets an urgent threat while preserving your own chances. Check the opponent’s idea first.",
+    "url": "https://lichess.org/training/003aS",
+    "gameUrl": "https://lichess.org/I7ZktFeR#85"
+  },
+  {
+    "id": "004Op",
+    "sourceFen": "2kr2r1/1bp4n/1pq1p2p/p1P5/1P3B2/P6P/5RP1/RB2Q1K1 w - - 3 26",
+    "fen": "2kr2r1/1bp4n/1pq1p2p/p1P5/1P3B2/P6P/5RP1/RB3QK1 b - - 4 26",
+    "setup": "e1f1",
+    "solver": "b",
+    "moves": [
+      "d8d1",
+      "f1d1",
+      "g8g2",
+      "g1f1",
+      "g2g1",
+      "f1e2",
+      "g1d1"
+    ],
+    "san": [
+      "Rd1",
+      "Qxd1",
+      "Rxg2+",
+      "Kf1",
+      "Rg1+",
+      "Ke2",
+      "Rxd1"
+    ],
+    "rating": 2280,
+    "popularity": 92,
+    "plays": 2837,
+    "theme": "sacrifice",
+    "themes": [
+      "crushing",
+      "deflection",
+      "kingsideAttack",
+      "middlegame",
+      "pin",
+      "sacrifice",
+      "skewer",
+      "veryLong"
+    ],
+    "explanation": "A sacrifice makes sense when the threats and follow-up win more than the material you give up. Calculate the forcing continuation before committing.",
+    "url": "https://lichess.org/training/004Op",
+    "gameUrl": "https://lichess.org/tneg9Bzk#51"
+  },
+  {
+    "id": "00DZe",
+    "sourceFen": "8/5k2/7p/p1P1bPpP/Pp2P3/1P1pBK2/8/8 w - - 1 47",
+    "fen": "8/5k2/7p/p1P1bPpP/Pp2P3/1P1p1K2/5B2/8 b - - 2 47",
+    "setup": "e3f2",
+    "solver": "b",
+    "moves": [
+      "g5g4",
+      "f3e3",
+      "e5d4",
+      "e3d3",
+      "d4f2"
+    ],
+    "san": [
+      "g4+",
+      "Ke3",
+      "Bd4+",
+      "Kxd3",
+      "Bxf2"
+    ],
+    "rating": 2318,
+    "popularity": 93,
+    "plays": 6249,
+    "theme": "deflection",
+    "themes": [
+      "bishopEndgame",
+      "crushing",
+      "deflection",
+      "endgame",
+      "long",
+      "master",
+      "skewer"
+    ],
+    "explanation": "A defender can only do so much. Look for a way to pull it away from the square or piece it must protect.",
+    "url": "https://lichess.org/training/00DZe",
+    "gameUrl": "https://lichess.org/MVHl8Zy9#93"
+  },
+  {
+    "id": "006XF",
+    "sourceFen": "r5kr/pp1qb1p1/2p4p/3pPb1Q/3P4/2P1B3/PP4PP/R4RK1 b - - 1 17",
+    "fen": "r5kr/pp1qb1p1/2p4p/3pP2Q/3Pb3/2P1B3/PP4PP/R4RK1 w - - 2 18",
+    "setup": "f5e4",
+    "solver": "w",
+    "moves": [
+      "h5f7",
+      "g8h7",
+      "f1f6",
+      "e7f6",
+      "f7d7"
+    ],
+    "san": [
+      "Qf7+",
+      "Kh7",
+      "Rf6",
+      "Bxf6",
+      "Qxd7"
+    ],
+    "rating": 2372,
+    "popularity": 90,
+    "plays": 1929,
+    "theme": "pin",
+    "themes": [
+      "advantage",
+      "long",
+      "middlegame",
+      "pin"
+    ],
+    "explanation": "A pinned piece has less freedom than it appears to have. Examine what would be exposed if it moved.",
+    "url": "https://lichess.org/training/006XF",
+    "gameUrl": "https://lichess.org/Ynra1LLE/black#34"
+  },
+  {
+    "id": "004sg",
+    "sourceFen": "6k1/p3b2p/1p1pP3/2p3P1/1Pnp3B/P6P/3Q3K/8 w - - 0 38",
+    "fen": "6k1/p3b2p/1p1pP3/2P3P1/2np3B/P6P/3Q3K/8 b - - 0 38",
+    "setup": "b4c5",
+    "solver": "b",
+    "moves": [
+      "c4d2",
+      "c5c6",
+      "d6d5",
+      "g5g6",
+      "e7d6"
+    ],
+    "san": [
+      "Nxd2",
+      "c6",
+      "d5",
+      "g6",
+      "Bd6+"
+    ],
+    "rating": 2439,
+    "popularity": 90,
+    "plays": 1394,
+    "theme": "clearance",
+    "themes": [
+      "advantage",
+      "clearance",
+      "endgame",
+      "hangingPiece",
+      "long",
+      "quietMove"
+    ],
+    "explanation": "A useful square or line may be occupied by your own piece. Find a way to clear it at the right moment.",
+    "url": "https://lichess.org/training/004sg",
+    "gameUrl": "https://lichess.org/pSRIvt7K#75"
+  }
+]

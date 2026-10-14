@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {installAudioPreference} from '../public/audio-preference.js';
+const handlers={},lifecycle={},saved=new Map();
+globalThis.localStorage={getItem:k=>saved.get(k),setItem:(k,v)=>saved.set(k,String(v))};
+globalThis.document={addEventListener:(k,f)=>handlers[k]=f};globalThis.addEventListener=(k,f)=>lifecycle[k]=f;
+const button={setAttribute(){},contains:()=>false};let state=[];
+installAudioPreference({buttons:[button],paint(){},apply:x=>state.push(x)});
+assert.deepEqual(state,[],'No playback before gesture');
+handlers.click({isTrusted:true,target:{}});assert.deepEqual(state,[true]);
+handlers.click({isTrusted:true,target:{}});assert.deepEqual(state,[true],'Only unlock once');
+handlers.click({isTrusted:true,target:button,preventDefault(){},stopImmediatePropagation(){}});assert.deepEqual(state,[true,false]);
+assert.equal(saved.get('mk-audio-enabled'),'false');
+state=[];installAudioPreference({buttons:[button],paint(){},apply:x=>state.push(x)});handlers.click({isTrusted:true,target:{}});assert.deepEqual(state,[],'Saved mute respected');
+console.log('Default-on audio: gesture unlock, single start, mute, and saved mute pass.');
