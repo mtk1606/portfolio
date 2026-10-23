@@ -10,3 +10,6 @@
 
 /* Keep the surname on one line after the deliberate first-name break. */
 .hero-type h1 .hero-surname{white-space:nowrap}
+
+/* Keep the mobile sound control easy to reach by touch. */
+@media(max-width:760px){body>header .header-controls #sound{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding-inline:10px}}
