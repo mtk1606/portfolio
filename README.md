@@ -51,3 +51,6 @@ The desktop background is a single outpainted cosmic artwork at its natural aspe
 The hero keeps the surname together after the deliberate first-name break. After Hours links to the existing pixel-style 3D room as a clearly labeled preview; the approved room remains the default. The mobile header keeps the sound toggle available at a touch-friendly size, with clear accessible names for sound and motion controls.
 
 Validation: both shaders compiled and rendered with Mesa EGL/ModernGL at outside, approaching-horizon and post-horizon camera states. The byte-target encoding fallback was also rendered to check gradients. A native rendered frame is retained in design/black-hole-render-preview.png. JavaScript syntax, all local paths/IDs/anchors, entrance state transitions, and existing chess continuation tests passed. Native offline rendering verifies shader compilation/output, not Three.js browser integration, responsive appearance, audio or actual laptop frame rates; these still need browser QA.
+
+## After Hours television feature
+The television keeps its original generated channels and can stream the loaded H.264/AAC feature from R2 with byte-range support. The 23:14 MP4 is stored outside Git history, so the website source and deploy archives stay small.

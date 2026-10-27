@@ -27,6 +27,29 @@ export function buildLounge(T,scene,box,cyl,mat,brass){
  // TV has its own original, low-resolution broadcast canvas.
  const tv=new T.Group();tv.position.set(-9.3,0,3.8);tv.rotation.y=.9;scene.add(tv);box(3.2,.14,1.5,0,1.1,0,walnut,tv);for(const x of [-1.25,1.25])box(.08,1.1,.8,x,.55,0,brass,tv);cushion(2.8,1.9,1.25,0,2.1,0,tv,walnut);box(2.5,1.64,.08,0,2.15,.67,dark,tv);
  const c=document.createElement('canvas');c.width=480;c.height=320;const ctx=c.getContext('2d'),texture=new T.CanvasTexture(c);texture.colorSpace=T.SRGBColorSpace;const screen=new T.Mesh(new T.PlaneGeometry(2.05,1.4),new T.MeshBasicMaterial({map:texture}));screen.position.set(-.12,2.15,.72);tv.add(screen);for(const y of [1.88,2.37])cyl(.09,.09,.04,1.12,y,.74,brass,tv).rotation.x=Math.PI/2;
- let channel=0,playing=false,last=-1;function update(t,motion){if(playing&&motion)record.rotation.y=t*.9;if(last>=0&&(!channel||!motion))return;if(Math.floor(t*8)===last)return;last=Math.floor(t*8);ctx.fillStyle='#07100f';ctx.fillRect(0,0,480,320);if(channel){ctx.fillStyle=channel===1?'#84968b':'#cabfa3';if(channel===1){for(let i=0;i<24;i++){const h=45+(i*71%157),x=i*23;ctx.fillStyle='#233731';ctx.fillRect(x,270-h,19,h);ctx.fillStyle='#8b9e88';for(let y=278-h;y<260;y+=12)for(let k=0;k<3;k++)if((i+k+y)%5<3)ctx.fillRect(x+3+k*5,y,2,4)}}else{for(let i=0;i<85;i++){const x=(i*137)%480,y=(i*i*43)%265;ctx.globalAlpha=.35+.5*Math.sin(i+(motion?t*.3:0))**2;ctx.fillRect(x,y,i%9===0?2:1,i%9===0?2:1)}ctx.globalAlpha=1}ctx.fillStyle='#bcbf9e';ctx.font='12px monospace';ctx.fillText(channel===1?'01 / THE CITY IS STILL AWAKE':'02 / A LITTLE PERSPECTIVE',24,298)}else{ctx.fillStyle='#3d4c43';ctx.font='14px monospace';ctx.fillText('LATE TRANSMISSION',155,165)}for(let y=0;y<320;y+=4){ctx.fillStyle='#00000035';ctx.fillRect(0,y,480,1)}texture.needsUpdate=true}
- return {update,setLamp(v){lamp.intensity=v?35:0},setPlaying(v){playing=v},setChannel(v){channel=Number(v);last=-1}};
+ const video=document.createElement('video');video.src='/api/video';video.crossOrigin='anonymous';video.preload='none';video.playsInline=true;
+ let channel=0,playing=false,last=-1,videoMode=false;
+ video.addEventListener('ended',()=>{videoMode=false;channel=0;last=-1;document.dispatchEvent(new Event('tv-video-ended'))});
+ function update(t,motion){
+  if(playing&&motion)record.rotation.y=t*.9;
+  if(videoMode){if(video.readyState>=2&&Math.floor(t*24)!==last){last=Math.floor(t*24);ctx.fillStyle='#070809';ctx.fillRect(0,0,480,320);const scale=Math.min(480/video.videoWidth,320/video.videoHeight),w=video.videoWidth*scale,h=video.videoHeight*scale;ctx.drawImage(video,(480-w)/2,(320-h)/2,w,h);texture.needsUpdate=true}return}
+  if(last>=0&&(!channel||!motion))return;
+  if(Math.floor(t*8)===last)return;
+  last=Math.floor(t*8);ctx.fillStyle='#07100f';ctx.fillRect(0,0,480,320);
+  if(channel){
+   ctx.fillStyle=channel===1?'#84968b':'#cabfa3';
+   if(channel===1){for(let i=0;i<24;i++){const h=45+(i*71%157),x=i*23;ctx.fillStyle='#233731';ctx.fillRect(x,270-h,19,h);ctx.fillStyle='#8b9e88';for(let y=278-h;y<260;y+=12)for(let k=0;k<3;k++)if((i+k+y)%5<3)ctx.fillRect(x+3+k*5,y,2,4)}}
+   else{for(let i=0;i<85;i++){const x=(i*137)%480,y=(i*i*43)%265;ctx.globalAlpha=.35+.5*Math.sin(i+(motion?t*.3:0))**2;ctx.fillRect(x,y,i%9===0?2:1,i%9===0?2:1)}ctx.globalAlpha=1}
+   ctx.fillStyle='#bcbf9e';ctx.font='12px monospace';ctx.fillText(channel===1?'01 / THE CITY IS STILL AWAKE':'02 / A LITTLE PERSPECTIVE',24,298)
+  }else{ctx.fillStyle='#3d4c43';ctx.font='14px monospace';ctx.fillText('LATE TRANSMISSION',155,165)}
+  for(let y=0;y<320;y+=4){ctx.fillStyle='#00000035';ctx.fillRect(0,y,480,1)}texture.needsUpdate=true
+ }
+ async function setVideo(on){
+  if(!on){videoMode=false;video.pause();try{video.currentTime=0}catch{}channel=0;last=-1;return}
+  videoMode=true;channel=0;last=-1;
+  try{await video.play()}catch(error){videoMode=false;video.pause();throw error}
+ }
+ function setChannel(value){videoMode=false;video.pause();try{video.currentTime=0}catch{}channel=Number(value);last=-1}
+
+ return {update,setLamp(v){lamp.intensity=v?35:0},setPlaying(v){playing=v},setChannel,setVideo};
 }

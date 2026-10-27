@@ -96,6 +96,7 @@ const lounge=buildLounge(T,scene,box,cyl,mat,brass);finishRoom(T,scene);
 export const setRoomLamp=v=>{lounge.setLamp(v);renderer.shadowMap.needsUpdate=true};
 export const setMusicPlaying=v=>lounge.setPlaying(v);
 export const setTVChannel=v=>lounge.setChannel(v);
+export const setTVVideo=v=>lounge.setVideo(v);
 // Pick only purposeful objects; camera movement is true perspective.
 const pickables=[];function hotspot(w,h,d,x,y,z,name){const o=box(w,h,d,x,y,z,new T.MeshBasicMaterial({visible:false}));o.userData.name=name;pickables.push(o)}hotspot(3,2.6,2,-3,3.6,0,'computer');hotspot(3,1.2,3,4,2.4,2,'chess');
 hotspot(1,.6,1,-4.9,1.45,6.65,'note');hotspot(6.7,2.5,2.8,-4.5,1.3,7,'sofa');hotspot(3.5,3.4,1.2,-8,2.7,-4,'mementos');hotspot(1.6,.4,1,-5.6,1.3,10.4,'mementos');

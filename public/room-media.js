@@ -1,12 +1,19 @@
 import {installAudioPreference} from './audio-preference.js';
 import {installRoomLayout} from './room-layout.js';
 import {preference,remember,readMemory,playlistURL,forgetMemory} from './visitor-memory.js';
-import {setMusicPlaying,setTVChannel,setRoomLamp} from './room-scene.js';
+import {setMusicPlaying,setTVChannel,setTVVideo,setRoomLamp} from './room-scene.js';
 import {createScore} from './original-score.js';
 const $=s=>document.querySelector(s),score=createScore('city');let wanted=false,request=0;
 async function toggle(){wanted=!wanted;const token=++request;try{if(wanted)await score.play();else score.stop();if(token!==request){if(!wanted)score.stop();return}setMusicPlaying(wanted);if(wanted)score.cue('needle');$('#music-toggle').textContent=wanted?'Pause record Ⅱ':'Play record ▷';$('#music-toggle').setAttribute('aria-pressed',String(wanted));$('#music-status').textContent=wanted?'Playing · '+($('#record-choice').value==='city'?'City after dark':'Velvet hour'):'The needle is resting.'}catch{wanted=false;$('#music-status').textContent='Audio could not start. Try Play again.'}}
-$('#music-toggle').onclick=toggle;$('#record-choice').onchange=e=>{score.setStyle(e.target.value);$('#music-status').textContent=wanted?'Playing · '+e.target.selectedOptions[0].textContent:'The needle is resting.'};$('#music-volume').oninput=e=>score.setVolume(Number(e.target.value));document.querySelectorAll('[data-channel]').forEach(b=>b.onclick=()=>{setTVChannel(b.dataset.channel);document.querySelectorAll('[data-channel]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
-document.addEventListener('room-mode',e=>{const m=e.detail;$('#music-panel').hidden=m!=='music';$('#tv-panel').hidden=m!=='tv';if(m==='music')$('#hint').textContent='Pick a record. Let the city carry on.';if(m==='tv')$('#hint').textContent='A late transmission. Nothing urgent.';if(m==='walk')$('#hint').textContent='Drag to look · WASD / arrows to walk · Click an object · Esc to return'});
+$('#music-toggle').onclick=toggle;$('#record-choice').onchange=e=>{score.setStyle(e.target.value);$('#music-status').textContent=wanted?'Playing · '+e.target.selectedOptions[0].textContent:'The needle is resting.'};$('#music-volume').oninput=e=>score.setVolume(Number(e.target.value));let tvFeaturePlaying=false;
+const tvFeature=$('#tv-video'),tvStatus=$('#tv-video-status');
+function paintTVFeature(on,message){tvFeaturePlaying=on;tvFeature.setAttribute('aria-pressed',String(on));tvFeature.textContent=on?'Stop the feature ■':'Play the feature ▷';if(message)tvStatus.textContent=message}
+async function stopTVFeature(message){if(tvFeaturePlaying)await setTVVideo(false);paintTVFeature(false,message)}
+tvFeature.onclick=async()=>{if(tvFeaturePlaying){await stopTVFeature('The feature stopped. Press play to restart.');return}tvFeature.disabled=true;tvStatus.textContent='Opening the feature…';try{await setTVVideo(true);paintTVFeature(true,'Playing on the room TV.');document.querySelectorAll('[data-channel]').forEach(x=>x.setAttribute('aria-pressed','false'))}catch{paintTVFeature(false,'The feature could not play. Try again in a moment.')}finally{tvFeature.disabled=false}};
+document.querySelectorAll('[data-channel]').forEach(b=>b.onclick=async()=>{await stopTVFeature('The original TV loop is on.');setTVChannel(b.dataset.channel);document.querySelectorAll('[data-channel]').forEach(x=>x.setAttribute('aria-pressed',String(x===b))) });
+document.addEventListener('tv-video-ended',()=>paintTVFeature(false,'The feature has ended.'));
+
+document.addEventListener('room-mode',e=>{const m=e.detail;if(m!=='tv')void stopTVFeature('A quiet transmission for the room.');$('#music-panel').hidden=m!=='music';$('#tv-panel').hidden=m!=='tv';if(m==='music')$('#hint').textContent='Pick a record. Let the city carry on.';if(m==='tv')$('#hint').textContent='A late transmission. Nothing urgent.';if(m==='walk')$('#hint').textContent='Drag to look · WASD / arrows to walk · Click an object · Esc to return'});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)score.suspend();else if(wanted)score.resume()});addEventListener('pagehide',()=>score.stop());
 
 // Sitting is deliberately quiet: retain the soundtrack, let the interface recede.
