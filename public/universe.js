@@ -28,9 +28,6 @@ for(const event of ['pointerenter','focusin'])executionCard.addEventListener(eve
 for(const event of ['pointerleave','focusout'])executionCard.addEventListener(event,()=>{exhibitEngaged=executionCard.matches(':hover,:focus-within');syncExhibit()});
 if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries){entry.target.classList.toggle('motion-visible',entry.isIntersecting);if(entry.target===executionCard){exhibitVisible=entry.isIntersecting;syncExhibit()}}},{threshold:.05});document.querySelectorAll('.exhibit,.market-wire').forEach(el=>observer.observe(el))}else{exhibitVisible=true;syncExhibit()}
 document.addEventListener('visibilitychange',()=>{document.body.classList.toggle('page-sleeping',document.hidden);syncExhibit()});new MutationObserver(syncExhibit).observe(document.body,{attributes:true,attributeFilter:['class']});
-q('#notes-portal').onclick=()=>q('#notes-dialog').showModal();q('#download-reward').onclick=()=>{const a=document.createElement('a');a.href='assets/star.svg';a.download='a-star-for-your-curiosity.svg';a.click()};
-let earned=false;try{earned=JSON.parse(localStorage.getItem('mk-lichess-solved-v1')||'[]').length>0}catch{}q('#reward-note').hidden=!earned;
-window.addEventListener('puzzle-solved',()=>{earned=true;q('#reward-note').hidden=false;q('#notes-portal span:last-child').textContent='A small discovery unlocked ↗'});
 document.querySelectorAll('[data-experience]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.chapter-switch button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.experience===b.dataset.experience)))}));
 // Original, quiet ambient score. Audio starts only after a visitor chooses sound.
 let ambientContext,ambientGain,ambientOn=false,ambientNodes=[],voiceOn=false,voiceIndex=0;

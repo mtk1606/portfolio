@@ -5,7 +5,7 @@ Approved source retained in design/checkpoints/approved-room-v2.js and .html. Th
 Pre-integration live commit: 871ef82907954a0390042db8e8398a7b59a5d42a
 Pre-integration live saved version: appgprj_6acacd62ab108191800dfc4bc5df9805~appgver_76251d5b7ee8819188d3263032692cb7
 
-This change replaces /after-hours.html with the approved modeled room. Previous flat games are available at /after-hours-flat.html as a low graphics fallback. Main portfolio changes are limited to portal art and entry transition. No schema or score-data migration.
+This change replaces /after-hours.html with the approved modeled room. The standalone flat-game and pixel-preview pages have been removed; the main 3D room is the only After Hours page. Its computer and chess-table activities remain inside the room. Main portfolio changes are limited to portal art and entry transition. No schema or score-data migration.
 
 room-scene.js renders the approved room, routes ray hits, paints the CRT canvas texture and rebuilds chess pieces. room-play.js owns game lifecycle, scores, keyboard/touch controls, and screen painting. room-chess.js owns legal puzzle transitions and is separately tested. All 10 existing Lichess puzzles are retained with source links. Existing game engines and API remain unchanged.
 
