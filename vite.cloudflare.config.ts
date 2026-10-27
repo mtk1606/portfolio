@@ -1,0 +1,46 @@
+import vinext from "vinext";
+import { defineConfig } from "vite";
+
+const PLACEHOLDER_D1_ID = "00000000-0000-4000-8000-000000000000";
+const d1Id = process.env.CLOUDFLARE_D1_DATABASE_ID || PLACEHOLDER_D1_ID;
+const r2BucketName = process.env.CLOUDFLARE_R2_BUCKET_NAME || "portfolio-media";
+
+export default defineConfig(async () => {
+  process.env.CLOUDFLARE_CF_FETCH_ENABLED ??= "false";
+  process.env.WRANGLER_SEND_METRICS ??= "false";
+  process.env.WRANGLER_WRITE_LOGS ??= "false";
+  process.env.WRANGLER_LOG_PATH ??= ".wrangler/logs";
+  process.env.WRANGLER_REGISTRY_PATH ??= ".wrangler/dev-registry";
+  process.env.MINIFLARE_REGISTRY_PATH ??= ".wrangler/registry";
+
+  const { cloudflare } = await import("@cloudflare/vite-plugin");
+
+  return {
+    plugins: [
+      vinext(),
+      cloudflare({
+        viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
+        inspectorPort: false,
+        config: {
+          name: "mohamed-el-khoudimi-portfolio",
+          main: "./build/cloudflare-worker.ts",
+          compatibility_date: "2026-10-27",
+          compatibility_flags: ["nodejs_compat"],
+          d1_databases: [
+            {
+              binding: "DB",
+              database_name: "portfolio",
+              database_id: d1Id,
+            },
+          ],
+          r2_buckets: [
+            {
+              binding: "BUCKET",
+              bucket_name: r2BucketName,
+            },
+          ],
+        },
+      }),
+    ],
+  };
+});
