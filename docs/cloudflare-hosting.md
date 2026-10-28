@@ -21,6 +21,8 @@ Connect the `cloudflare-hosting` branch of `mtk1606/portfolio` to a Cloudflare W
 
 Install the repository dependencies using the lockfile before the build. Verify the generated `workers.dev` address first, including `/`, `/resume.html`, `/after-hours.html`, `/api/arcade`, and `/api/video`.
 
+Cloudflare deployment setup is being tested.
+
 Before the first deploy, build with `CLOUDFLARE_D1_DATABASE_ID` set. Then initialize the tables once with `pnpm exec wrangler d1 execute portfolio --remote --file=drizzle/0000_fine_the_renegades.sql --config dist/server/wrangler.json`.
 
 ## Domain cutover
