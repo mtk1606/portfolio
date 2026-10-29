@@ -31,7 +31,7 @@ addEventListener('pagehide',()=>{wanted=false;request++;setMusicPlaying(false);$
 
 // Restore preferences, never the playing state.
 const savedRecord=preference('record','city',['city','velvet']);$('#record-choice').value=savedRecord;score.setStyle(savedRecord);
-function markRecord(value){document.querySelectorAll('[data-record]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.record===value)));remember('record',value)}
+function markRecord(value){document.dispatchEvent(new CustomEvent('study-radio-dial',{detail:value}));document.querySelectorAll('[data-record]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.record===value)));remember('record',value)}
 markRecord(savedRecord);const changeRecord=$('#record-choice').onchange;$('#record-choice').onchange=e=>{changeRecord(e);markRecord(e.target.value)};
 document.querySelectorAll('[data-record]').forEach(b=>b.onclick=()=>{$('#record-choice').value=b.dataset.record;$('#record-choice').onchange({target:$('#record-choice')})});
 const volume=Number(readMemory().volume);if(Number.isFinite(volume)&&volume>=0&&volume<=.3){$('#music-volume').value=volume;score.setVolume(volume)}
