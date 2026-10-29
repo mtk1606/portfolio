@@ -68,3 +68,29 @@ body.collection-open{overflow:hidden}#inner-collection{position:fixed;inset:0;ma
 #threshold.travelling .threshold-copy{opacity:0;transform:translateY(-5px);transition-duration:.35s}
 #threshold .threshold-shortcuts a{pointer-events:auto}
 @media(prefers-reduced-motion:reduce){#threshold .threshold-copy{transition:none;transform:none}}body.no-motion #threshold .threshold-copy{transition:none;transform:none}
+
+#gravity-scene canvas:focus-visible{outline:1px solid #d8ccb07a;outline-offset:-7px}
+
+/* Phase two: an approach, darkness, then the portfolio. */
+#threshold{transition:opacity .45s ease;background:#000}
+#threshold.arrival-flash{background:#000;transition:opacity .95s cubic-bezier(.22,.7,.3,1)}
+body.arriving .world{animation:world-settle 1.2s ease-out both}
+body.arriving .hero-type,body.arriving header,body.arriving .pixel-orbit{animation:portfolio-settle 1s .2s ease-out both}
+@keyframes world-settle{from{opacity:.4}to{opacity:1}}
+@keyframes portfolio-settle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+#threshold .threshold-copy p{font:italic clamp(15px,1.5vw,20px)/1.5 Georgia,serif;letter-spacing:.2px;color:#d4c9b6;margin-bottom:22px}
+#enter-universe{font:14px/1.5 var(--mono);letter-spacing:2px;min-height:48px;padding:10px 13px;color:#e7ddc8;border-bottom-color:#b9aa8870}
+.threshold-settings{position:absolute;left:4%;bottom:4%;font:10px/1.5 var(--mono);color:#a99e88;z-index:3}
+.threshold-settings summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;gap:10px}
+.threshold-settings summary:after{content:'+';color:#c5b89d}.threshold-settings[open] summary:after{content:'−'}
+.threshold-settings .render-quality{position:static;transform:none;background:#11110eea;border:1px solid #8d816544;padding:14px;gap:20px;box-shadow:0 8px 20px #0006}
+#journey-status{left:50%;bottom:5.3%;transform:translateX(-50%);max-width:45%;width:max-content;text-align:center;font:9px/1.6 var(--mono);letter-spacing:.7px;color:#a79e8b;pointer-events:none}
+#intro-sound{min-height:44px;bottom:4%}
+.travelling .threshold-settings,.travelling #intro-sound{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s}
+.travelling .threshold-top>span,.travelling .threshold-shortcuts a{visibility:hidden}
+.render-unavailable .threshold-settings{display:none}
+#threshold summary:focus-visible{outline:1px solid #b5a17a;outline-offset:3px}
+@media(max-width:700px){.threshold-settings{left:6%;bottom:3%}#intro-sound{right:6%;bottom:3%}#journey-status{bottom:12%;max-width:85%;width:85%;font-size:8px}#threshold .threshold-copy{bottom:21%}.threshold-top .threshold-shortcuts{display:flex;gap:12px}.threshold-top .threshold-shortcuts a{display:none}}
+@media(prefers-reduced-motion:reduce){#threshold,#threshold.arrival-flash{transition:none}body.arriving .world,body.arriving .hero-type,body.arriving header,body.arriving .pixel-orbit{animation:none}}
+body.no-motion #threshold,body.no-motion #threshold.arrival-flash{transition:none}
+body.no-motion.arriving .world,body.no-motion.arriving .hero-type,body.no-motion.arriving header,body.no-motion.arriving .pixel-orbit{animation:none}

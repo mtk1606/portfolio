@@ -6,9 +6,9 @@ globalThis.document={addEventListener:(k,f)=>handlers[k]=f};globalThis.addEventL
 const button={setAttribute(){},contains:()=>false};let state=[];
 installAudioPreference({buttons:[button],paint(){},apply:x=>state.push(x)});
 assert.deepEqual(state,[],'No playback before gesture');
-handlers.click({isTrusted:true,target:{}});assert.deepEqual(state,[true]);
-handlers.click({isTrusted:true,target:{}});assert.deepEqual(state,[true],'Only unlock once');
-handlers.click({isTrusted:true,target:button,preventDefault(){},stopImmediatePropagation(){}});assert.deepEqual(state,[true,false]);
-assert.equal(saved.get('mk-audio-enabled'),'false');
-state=[];installAudioPreference({buttons:[button],paint(){},apply:x=>state.push(x)});handlers.click({isTrusted:true,target:{}});assert.deepEqual(state,[],'Saved mute respected');
-console.log('Default-on audio: gesture unlock, single start, mute, and saved mute pass.');
+handlers.click({isTrusted:true,target:{}});assert.deepEqual(state,[]);
+handlers.click({isTrusted:true,target:{}});assert.deepEqual(state,[],'Gestures do not enable sound');
+handlers.click({isTrusted:true,target:button,preventDefault(){},stopImmediatePropagation(){}});assert.deepEqual(state,[true]);
+assert.equal(saved.get('mk-audio-enabled'),'true');
+saved.set('mk-audio-enabled','false');state=[];installAudioPreference({buttons:[button],paint(){},apply:x=>state.push(x)});handlers.click({isTrusted:true,target:{}});assert.deepEqual(state,[],'Saved mute respected');
+console.log('Default-off audio: explicit opt-in and saved mute pass.');

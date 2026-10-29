@@ -1,6 +1,6 @@
 #after-hours{grid-template-columns:1fr}
 .city-portal{position:relative;display:block;grid-column:1/-1;min-height:330px;overflow:hidden;border:1px solid #bcae884a;background:#06080d;color:#eee4cf;text-decoration:none;box-shadow:inset 0 0 50px #000}
-.city-portal-view{position:absolute;inset:0;background:linear-gradient(0deg,#05070cbb,transparent 65%),url('/assets/room-window.svg') center/cover;transition:transform 1.2s,filter 1s;filter:saturate(.8)}
+.city-portal-view{position:absolute;inset:0;background:linear-gradient(0deg,#05070cbb,transparent 65%),url('/assets/study-entrance.webp') center/cover;transition:transform 1.2s,filter 1s;filter:saturate(.8)}
 .city-portal:hover .city-portal-view{transform:scale(1.035);filter:saturate(1.1)}
 .city-portal-view:after{content:'AFTER HOURS / STEP INSIDE ↗';position:absolute;inset:12px;display:grid;place-items:center;border:12px solid #0d1019;background:repeating-linear-gradient(90deg,transparent 0 24%,#ad986b40 24% 24.3%,transparent 24.3% 25%);box-shadow:inset 0 0 0 1px #9b855044;color:#c5b28f;font:10px monospace;letter-spacing:2px;pointer-events:none}
 .room-preview-ready .city-portal-view:after{display:none}
@@ -8,8 +8,10 @@
 .portal-caption span{color:#c2b89f;font:9px monospace;letter-spacing:1.5px}
 .portal-caption strong{font:18px monospace;font-weight:400}
 .city-portal:focus-visible{outline:2px solid #e6b46f;outline-offset:6px}
-#room-passage{position:fixed;inset:0;z-index:25000;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#100a1b;color:#decba6;pointer-events:all}
+#room-passage{position:fixed;inset:0;z-index:25000;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#151411;color:#decba6;pointer-events:all}
 #room-passage>span{font:10px monospace;letter-spacing:5px}
 #room-passage p{font:italic 30px Georgia}
 @media(max-width:700px){.city-portal{min-height:290px}}
 @media(prefers-reduced-motion:reduce){.city-portal-view{transition:none}}
+
+.city-portal-view:after{display:none}.city-portal{min-height:300px;background:#151411}.city-portal-view{filter:none;background-position:center;background-size:cover}.portal-caption{background:linear-gradient(transparent,#10100de6)}

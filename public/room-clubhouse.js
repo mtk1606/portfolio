@@ -1,0 +1,33 @@
+export function buildClubhouse(T,scene,box,cyl,mat){
+ const walnut=mat('#392b2b'),ink=mat('#23232b'),ivory=mat('#c3b18f'),brass=mat('#8e7657',.45,.55),oxblood=mat('#69424b');
+ function texture(w,h,paint){const c=document.createElement('canvas');c.width=w;c.height=h;paint(c.getContext('2d'));const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;return t;}
+ function panel(w,h,t,x,y,z,parent=scene){const m=new T.Mesh(new T.PlaneGeometry(w,h),new T.MeshStandardMaterial({map:t,roughness:1,metalness:0,emissive:'#bcae91',emissiveIntensity:.08}));m.position.set(x,y,z);parent.add(m);return m;}
+ // A real frame on the left wall, separate from the existing keepsakes on the shelf.
+ const gallery=new T.Group();gallery.name='A little perspective / framed original painting';gallery.position.set(-11.72,6.1,-1.3);gallery.rotation.y=Math.PI/2;scene.add(gallery);
+ box(4.8,3.4,.16,0,0,0,walnut,gallery);box(4.56,3.16,.10,0,0,.12,brass,gallery);box(4.32,2.92,.08,0,0,.19,ink,gallery);
+ const artMap=new T.TextureLoader().load('/assets/afterhours-perspective.webp');artMap.colorSpace=T.SRGBColorSpace;panel(4.12,2.74,artMap,0,0,.24,gallery);
+ const plaque=texture(640,110,c=>{c.fillStyle='#8c785b';c.fillRect(0,0,640,110);c.fillStyle='#27232a';c.font='25px Georgia';c.textAlign='center';c.fillText('A LITTLE PERSPECTIVE',320,43);c.font='16px Georgia';c.fillText('An original painting for this room',320,78)});panel(2.6,.45,plaque,0,-1.98,.13,gallery);
+ const galleryLight=new T.SpotLight('#eed9ba',22,8,.85,.8,1.4);galleryLight.position.set(-9.8,8.4,-1.3);galleryLight.target.position.set(-11.7,6.1,-1.3);scene.add(galleryLight,galleryLight.target);
+ // A small physical invitation on the coffee table; the live scorecard holds the current feature.
+ const challengeMap=texture(640,360,c=>{c.fillStyle='#c9bb9b';c.fillRect(0,0,640,360);c.strokeStyle='#7c6850';c.lineWidth=2;c.strokeRect(18,18,604,324);c.fillStyle='#49373d';c.font='20px monospace';c.fillText('AFTER HOURS / THE HOUSE CHALLENGE',38,62);c.font='italic 43px Georgia';c.fillText('No rush. Your move.',38,145);c.font='24px Georgia';c.fillText('A fresh scorecard every fortnight.',38,219);c.font='18px monospace';c.fillText('PICK THIS UP / STAY A WHILE',38,300);});const invitation=panel(1.65,.92,challengeMap,-5.3,1.31,10.05);invitation.rotation.set(-Math.PI/2,0,-.13);
+ // The desk chair has an actual draped jacket instead of a floating decorative icon.
+ const chair=new T.Group();chair.name='Desk chair / jacket left for another evening';chair.position.set(-6.3,0,2.7);chair.rotation.y=.38;scene.add(chair);box(1.5,.19,1.55,0,1.25,0,walnut,chair);box(1.5,1.6,.18,0,2.08,.7,walnut,chair);for(const x of [-.63,.63])for(const z of [-.58,.58])box(.09,1.2,.09,x,.6,z,brass,chair);
+ const clothGeo=new T.PlaneGeometry(1.35,2.5,16,26),a=clothGeo.attributes.position;for(let i=0;i<a.count;i++){const x=a.getX(i),v=(a.getY(i)+1.25)/2.5;a.setXYZ(i,x,1.18+v*1.65,.66-Math.sin(v*Math.PI)*.5+.05*Math.sin(x*15+v*6));}clothGeo.computeVertexNormals();const coat=new T.Mesh(clothGeo,new T.MeshStandardMaterial({color:'#4a4351',roughness:1,side:T.DoubleSide}));chair.add(coat);box(.35,.13,1.1,.72,1.35,.21,ink,chair).rotation.y=.3;
+ // Coffee-ring evidence, pencil scribbles, and an unfinished notebook on the desk.
+ const deskMap=texture(512,512,c=>{c.clearRect(0,0,512,512);c.strokeStyle='#5a352b66';c.lineWidth=8;c.beginPath();c.ellipse(280,235,100,93,.2,.15,Math.PI*1.9);c.stroke();c.lineWidth=2;c.strokeStyle='#91705455';c.beginPath();c.ellipse(280,235,108,101,.2,.3,Math.PI*1.85);c.stroke();});const ring=new T.Mesh(new T.PlaneGeometry(.68,.68),new T.MeshBasicMaterial({map:deskMap,transparent:true,depthWrite:false}));ring.rotation.x=-Math.PI/2;ring.position.set(-1.1,2.493,.8);scene.add(ring);
+ const noteMap=texture(640,420,c=>{c.fillStyle='#cabc9e';c.fillRect(0,0,640,420);c.strokeStyle='#8a7b6144';for(let y=80;y<390;y+=42){c.beginPath();c.moveTo(30,y);c.lineTo(610,y);c.stroke()}c.fillStyle='#504537';c.font='italic 33px Georgia';c.fillText('Tomorrow: try the simpler idea.',30,74);c.font='24px Georgia';c.fillText('1. Make it work.',35,151);c.fillText('2. Find the assumption.',35,199);c.fillText('3. Take a break.',35,247);c.strokeStyle='#6d5146';c.beginPath();c.moveTo(32,240);c.lineTo(217,255);c.stroke();c.font='italic 28px Georgia';c.fillText('Actually, do this one first.',46,335);});const note=panel(.95,.64,noteMap,-.66,2.675,.3);note.rotation.set(-Math.PI/2,0,.14);
+ // The back-room pool table: worn blue cloth, walnut rails, six leather pockets.
+ const pool=new T.Group();pool.name='Five quiet shots / pool table';pool.position.set(8.1,0,15.5);pool.rotation.y=Math.PI/2;scene.add(pool);
+ box(5.2,.45,3,0,2,0,walnut,pool);box(4.75,.08,2.55,0,2.26,0,mat('#512e3a'),pool);
+ for(const x of [-2.55,2.55])box(.18,.18,3,x,2.37,0,walnut,pool);
+ for(const z of [-1.45,1.45])box(5.2,.18,.18,0,2.37,z,walnut,pool);
+ for(const x of [-2.3,0,2.3])for(const z of [-1.23,1.23])cyl(.17,.17,.06,x,2.32,z,ink,pool);
+ for(const x of [-2,2])for(const z of [-1,1])box(.25,1.85,.25,x,.95,z,walnut,pool);
+ for(const [x,z,color] of [[-1,0,'#eee4ce'],[1,.3,'#a66a5d']]){const b=new T.Mesh(new T.SphereGeometry(.12,16,12),mat(color));b.position.set(x,2.42,z);pool.add(b);}
+ const gameBook=new T.Group();gameBook.name='The games notebook';gameBook.position.set(-3.5,1.39,10);gameBook.rotation.y=.18;scene.add(gameBook);box(1.15,.12,.85,0,0,0,oxblood,gameBook);box(1.05,.07,.79,.03,.08,0,ivory,gameBook);
+ const cover=new T.Group();cover.position.set(-.56,.13,0);gameBook.add(cover);box(1.14,.035,.86,.57,0,0,oxblood,cover);let bookLift=0,bookTarget=0;document.addEventListener('study-book-lift',()=>bookTarget=1);document.addEventListener('study-book-rest',()=>bookTarget=0);
+ const billiardLamp=new T.Group();billiardLamp.position.set(8.1,6.6,15.5);scene.add(billiardLamp);for(const z of [-1.5,0,1.5]){cyl(.34,.67,.55,0,0,z,ink,billiardLamp);cyl(.59,.59,.025,0,-.28,z,brass,billiardLamp);cyl(.015,.015,6.0,0,3.25,z,brass,billiardLamp);}const poolLight=new T.SpotLight('#e8d4ad',12,10,.65,.7,1.4);poolLight.position.set(8.1,6.25,15.5);poolLight.target.position.set(8.1,2.2,15.5);scene.add(poolLight,poolLight.target);let poolTarget=12;
+ document.addEventListener('study-pool-approach',()=>poolTarget=80);document.addEventListener('study-pool-rest',()=>poolTarget=12);
+
+ return {update(dt,motion){bookLift+= (bookTarget-bookLift)*(motion?1-Math.exp(-6*dt):1);gameBook.position.y=1.39+bookLift*.75;gameBook.rotation.x=-bookLift*.32;cover.rotation.z=bookLift*2.5;poolLight.intensity+=(poolTarget-poolLight.intensity)*(motion?1-Math.exp(-4*dt):1);},setHover(name){galleryLight.intensity=name==='art'?32:22;}};
+}
