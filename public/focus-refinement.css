@@ -1,0 +1,15 @@
+/* A clearer professional route inside the existing world. */
+.hero-intro{max-width:51ch!important;line-height:1.65!important}
+.hero-personal{display:inline-block;font-size:13px!important;line-height:1.65!important;max-width:52ch;margin-top:10px}
+#about.section{min-height:0!important;padding-block:85px!important}
+#contact.section{min-height:0!important;padding-top:65px!important;padding-bottom:60px!important}
+.closing-links{display:flex;flex-wrap:wrap;gap:12px 28px;margin:22px 0}
+.closing-links a{font:14px/1.5 var(--mono);min-height:44px;display:inline-flex;align-items:center;color:#e1d2af;border-bottom:1px solid #a28d6655;text-decoration:none}
+.closing-links a:focus-visible{outline:2px solid #dec48b;outline-offset:5px}
+.narration-settings-copy{font:14px/1.65 Georgia!important;color:#c6b995;margin:20px 0 8px}
+.engineering-trace{border-collapse:collapse;width:100%;font:14px/1.6 Georgia;color:#3f3223;margin:20px 0}
+.engineering-trace caption{font:italic 14px/1.6 Georgia;text-align:left;color:#765331;margin-bottom:10px}
+.engineering-trace :is(th,td){border-bottom:1px solid #8a75564d;padding:10px 7px;text-align:left}
+.engineering-trace thead th{font:11px/1.6 monospace;vertical-align:bottom}.engineering-trace tbody th{font-weight:normal}.engineering-trace tbody tr:last-child{background:#a9906020}
+.trace-scroll{overflow-x:auto}
+@media(max-width:700px){.hero-intro{max-width:35ch!important;font-size:15px!important}.hero-personal{font-size:12px!important;max-width:36ch}#about.section{padding-block:50px!important}#contact.section{padding-block:42px!important}.closing-links{gap:8px 20px}.closing-links a{font-size:13px}.engineering-trace{font-size:13px}.engineering-trace :is(th,td){padding:9px 4px}}

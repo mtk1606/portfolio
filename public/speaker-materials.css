@@ -1,0 +1,39 @@
+/* Small physical controls; the speaker remains the only visible symbol. */
+.object-speaker{transition:box-shadow .16s,background-color .16s;isolation:isolate}
+.object-speaker svg{position:relative;z-index:2}
+.object-speaker::before,.object-speaker::after{content:'';position:absolute;pointer-events:none}
+/* A padded, hand-stitched cloth button anchored to the notebook. */
+.notebook>.object-speaker{width:49px;height:49px;right:14px;top:64px;border:2px solid #3b4330;border-radius:14px 12px 15px 11px;transform:rotate(5deg);background:repeating-linear-gradient(0deg,#ffffff06 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,#00000012 0 1px,transparent 1px 3px),linear-gradient(135deg,#6b7550,#35432d);color:#eee0bb;box-shadow:inset 2px 2px 3px #b4ba8255,inset -2px -3px 4px #17201499,2px 4px 4px #201a1855}
+.notebook>.object-speaker::before{inset:4px;border:1px dashed #d8c89d;border-radius:10px 8px 11px 7px;opacity:.9}
+.notebook>.object-speaker::after{inset:-5px;border-radius:17px;background:radial-gradient(ellipse at 8% 30%,#65513888 0 1px,transparent 2px),radial-gradient(ellipse at 93% 70%,#65513888 0 1px,transparent 2px);z-index:-1}
+.notebook>.object-speaker[aria-pressed=true]{background:repeating-linear-gradient(90deg,#ffffff0a 0 1px,transparent 1px 3px),linear-gradient(135deg,#8b784e,#4d5132);box-shadow:inset 2px 3px 6px #1c241a99,1px 2px 3px #201a1855}
+/* Newspaper: a letterpress seal, slightly uneven ink on the paper. */
+.newspaper>.object-speaker{width:48px;height:48px;background:transparent;color:#7b4333;border:2px solid #81503bb8;border-radius:50%;rotate:-8deg;box-shadow:none;margin:7px 8px 8px 13px}
+.newspaper>.object-speaker::before{inset:3px;border:1px dotted #81503bad;border-radius:50%}
+.newspaper>.object-speaker::after{inset:-4px;border:1px solid #81503b35;border-radius:48% 52% 51% 49%}
+.newspaper>.object-speaker svg{filter:drop-shadow(.5px .5px 0 #81503b33)}
+.newspaper>.object-speaker[aria-pressed=true]{background:#81503b1c;color:#542b23;box-shadow:inset 0 0 8px #81503b22}
+/* Radio and arcade: recessed enamel controls with a brass retaining ring. */
+.finder-controls>.object-speaker,.cabinet-marquee>.object-speaker{border:2px solid #95815b;box-shadow:0 0 0 2px #242c1d,inset 1px 2px 3px #c3c38a55,inset -1px -2px 4px #10180fcc,1px 3px 4px #0006}
+.finder-controls>.object-speaker::before,.cabinet-marquee>.object-speaker::before{inset:3px;border:1px solid #c4b47738;border-radius:50%}
+/* Study: a warm brass rosette. */
+.afterhours-heading>.object-speaker{background:radial-gradient(circle at 35% 25%,#b49a60,#76603b 60%,#40361f);color:#241e13;border:2px solid #ab925b;box-shadow:0 0 0 3px #4c42264d,inset 1px 1px 2px #ead4a0aa,1px 3px 5px #0008}
+.afterhours-heading>.object-speaker::before{inset:4px;border:1px solid #e0c68a77;border-radius:50%}
+/* Personal note: deep blue enamel, closing note: a warm wax seal. */
+#about .object-speaker{background:linear-gradient(145deg,#415968,#1b303b);color:#e3d7bb;border:2px solid #8d8d77;box-shadow:inset 1px 1px 3px #c9d9d43d,1px 3px 4px #0008}
+#contact>.object-speaker{background:radial-gradient(ellipse at 30% 25%,#a05745,#6c302c 65%,#472420);color:#ead4b0;border:2px solid #8e473b;border-radius:48% 53% 46% 51%;box-shadow:inset 1px 2px 2px #df998355,inset -2px -2px 3px #34141077,2px 3px 4px #0007;rotate:-6deg}
+#contact>.object-speaker::before{inset:4px;border:1px solid #d88c7177;border-radius:50%;box-shadow:inset 0 1px 2px #35141155}
+.object-speaker:active{translate:0 1px}
+.object-speaker:focus-visible{outline:3px solid #d9bb76;outline-offset:5px}
+@media(max-width:700px){.notebook>.object-speaker{right:13px;top:77px}.newspaper>.object-speaker{margin:5px 0 8px 10px}}
+@media(prefers-reduced-motion:reduce){.object-speaker{transition:none}.object-speaker:active{translate:none}}
+
+.voice-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.object-speaker[data-playback=loading]::after{inset:3px;border:2px solid transparent;border-top-color:currentColor;border-radius:50%;animation:speaker-loading 1.1s linear infinite;z-index:3}
+.object-speaker[data-playback=loading] svg{opacity:.45}
+.object-speaker[data-playback=playing]{outline:1px solid #c8ae71;outline-offset:3px}
+#narration-captions{width:max-content;max-width:min(620px,calc(100vw - 32px));max-height:22dvh;box-sizing:border-box;font-size:16px;line-height:1.6;pointer-events:none}
+@keyframes speaker-loading{to{transform:rotate(360deg)}}
+@media(max-width:700px){#narration-captions{font-size:15px;line-height:1.55;padding:11px 15px;max-height:22dvh}.notebook>.object-speaker{top:12px;right:12px}.notebook-tabs{padding-right:52px!important}.newspaper>.object-speaker{margin-top:0}.afterhours-heading>.object-speaker{margin-bottom:12px}}
+@media(prefers-reduced-motion:reduce){.object-speaker[data-playback=loading]::after{animation:none;border-style:dashed}}
+body.no-motion .object-speaker[data-playback=loading]::after{animation:none;border-style:dashed}

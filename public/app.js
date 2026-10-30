@@ -1,3 +1,4 @@
+import {playObjectSound,setAudioSettings} from './portfolio-audio.js';
 'use strict';
 import {experienceCase} from './experience-cases.js';
 import {installCollection} from './inner-collection.js';
@@ -9,14 +10,10 @@ $('#year').textContent=new Date().getFullYear();
 function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),4000)}
 function setMotion(){document.body.classList.toggle('no-motion',reduced);$('#motion').textContent=reduced?'▷':'Ⅱ';$('#motion').setAttribute('aria-pressed',String(reduced));$('#motion').setAttribute('aria-label',reduced?'Resume visual motion':'Pause visual motion')}setMotion();$('#motion').onclick=()=>{reduced=!reduced;setMotion()};
 $('#wire-pause').onclick=()=>{const p=$('.market-wire').classList.toggle('paused');$('#wire-pause').textContent=p?'▷':'Ⅱ';$('#wire-pause').setAttribute('aria-pressed',String(p));$('#wire-pause').setAttribute('aria-label',p?'Resume research ticker':'Pause research ticker')};
-// Short original interface cues, synthesized locally. No autoplay or background loop.
-let soundEnabled=false,audio=null,master=null,lastTick=0;const activeVoices=new Set();
-function initAudio(){const A=window.AudioContext||window.webkitAudioContext;if(!A)return false;if(!audio){audio=new A();master=audio.createGain();master.gain.value=.18;master.connect(audio.destination)}if(audio.state==='suspended')audio.resume().catch(()=>{});return true}
-function tone(f,start,duration,gain=.08,type='sine',end){const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.setValueAtTime(f,start);if(end)o.frequency.exponentialRampToValueAtTime(end,start+duration);g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(gain,start+.008);g.gain.exponentialRampToValueAtTime(.0001,start+duration);o.connect(g);g.connect(master);o.start(start);o.stop(start+duration+.02);activeVoices.add(o);o.onended=()=>{activeVoices.delete(o);o.disconnect();g.disconnect()}}
-function cue(kind='click'){if(!soundEnabled||document.hidden||!audio)return;const t=audio.currentTime;if(kind==='click'){if(t-lastTick<.07)return;lastTick=t;tone(650,t,.055,.06,'triangle',300)}else if(kind==='open'){tone(164.81,t,.35,.1);tone(246.94,t+.06,.35,.065);tone(329.63,t+.12,.45,.04)}else if(kind==='close'){tone(220,t,.16,.05,'sine',164.81)}else if(kind==='win'){[261.63,329.63,392,523.25].forEach((f,i)=>tone(f,t+i*.09,.5,.07))}else if(kind==='hint'){tone(293.66,t,.2,.045);tone(220,t+.1,.3,.035)}}
-export function setInterfaceSound(enabled){soundEnabled=enabled&&initAudio();if(!soundEnabled){for(const o of activeVoices){try{o.stop()}catch{}}}if(soundEnabled)cue('open')}
-document.addEventListener('click',e=>{if(e.target.closest('button,a')&&!e.target.closest('#sound'))cue('click')});
-const baseTitle=document.title;document.addEventListener('visibilitychange',()=>{$('#favicon').href=document.hidden?'assets/favicon-away.svg':'assets/favicon.svg';document.title=document.hidden?'A thought in progress. — MK':baseTitle;if(document.hidden){if(audio)audio.suspend().catch(()=>{});}else if(audio&&soundEnabled)audio.resume().catch(()=>{})});
+// Object-specific audio is owned by portfolio-audio and portfolio-touch.
+function cue(kind){if(kind==='win')playObjectSound('discovery');}
+export function setInterfaceSound(enabled){setAudioSettings({objects:enabled});}
+const baseTitle=document.title;document.addEventListener('visibilitychange',()=>{$('#favicon').href=document.hidden?'assets/favicon-away.svg':'assets/favicon.svg';document.title=document.hidden?'A thought in progress. — MK':baseTitle});
 let returnFocus=null;function openDialog(d){if(d.open)return;returnFocus=document.activeElement;d.showModal();cue('open')}
 $$('dialog').forEach(d=>{const closeButton=d.querySelector('.close');if(closeButton)closeButton.onclick=()=>d.close();d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}});d.addEventListener('close',()=>{cue('close');if(returnFocus?.isConnected)returnFocus.focus()})});
 $('#copy-email').onclick=async()=>{try{await navigator.clipboard.writeText('elkhoudimimohamed@gmail.com');toast('Email copied. Start a conversation.')}catch{toast('elkhoudimimohamed@gmail.com')}};
