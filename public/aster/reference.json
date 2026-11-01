@@ -1,0 +1,410 @@
+{
+  "fixture": "synthetic-queue-v1",
+  "sourceCommit": "a1d84909f9b4c146b33ba58d8e09d2718ca231aa",
+  "sha256": "7869742e4b6b478c9f9d20a440b69f33660254e4bafd2244e3de3e593b3844a2",
+  "labels": [
+    "Empty book. Move forward to receive the first message.",
+    "A opens the bid with 100 shares.",
+    "C opens the ask. The spread is two cents.",
+    "B joins behind A at the same price.",
+    "Cancel 40 from A. Its priority stays first.",
+    "The feed reports 60 executed against A.",
+    "Then 15 execute against B. B has 45 left.",
+    "D joins behind B at the bid.",
+    "Replace B at the same price. Its new reference goes behind D.",
+    "A better bid appears at 189.43.",
+    "Cancel 20 on the ask. Sixty remain.",
+    "Delete the better bid. The old level becomes best again.",
+    "D executes first. The replacement is now alone at the bid."
+  ],
+  "aliases": {
+    "9007199254740993": "A",
+    "9007199254740994": "C",
+    "9007199254740995": "B",
+    "9007199254740996": "D",
+    "9007199254740997": "B\u2032",
+    "9007199254740998": "E"
+  },
+  "states": [
+    {
+      "orders": 0,
+      "hash": "cbf29ce484222325",
+      "levels": []
+    },
+    {
+      "orders": 1,
+      "hash": "5612418f1f38ec46",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "100",
+          "fifo": [
+            {
+              "id": "9007199254740993",
+              "shares": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 2,
+      "hash": "3f2e5dcd056a29b2",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "100",
+          "fifo": [
+            {
+              "id": "9007199254740993",
+              "shares": 100
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "80",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 3,
+      "hash": "52a9dcfb823e51f7",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "160",
+          "fifo": [
+            {
+              "id": "9007199254740993",
+              "shares": 100
+            },
+            {
+              "id": "9007199254740995",
+              "shares": 60
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "80",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 3,
+      "hash": "ecb97ab80a4bafbf",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "120",
+          "fifo": [
+            {
+              "id": "9007199254740993",
+              "shares": 60
+            },
+            {
+              "id": "9007199254740995",
+              "shares": 60
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "80",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 2,
+      "hash": "dae37ff21e1ee358",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "60",
+          "fifo": [
+            {
+              "id": "9007199254740995",
+              "shares": 60
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "80",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 2,
+      "hash": "b722717189f0cff9",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "45",
+          "fifo": [
+            {
+              "id": "9007199254740995",
+              "shares": 45
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "80",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 3,
+      "hash": "b52fedb81a9a27d5",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "75",
+          "fifo": [
+            {
+              "id": "9007199254740995",
+              "shares": 45
+            },
+            {
+              "id": "9007199254740996",
+              "shares": 30
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "80",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 3,
+      "hash": "323b1488cfd66bdb",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "75",
+          "fifo": [
+            {
+              "id": "9007199254740996",
+              "shares": 30
+            },
+            {
+              "id": "9007199254740997",
+              "shares": 45
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "80",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 4,
+      "hash": "4edebf0865d409fe",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894300,
+          "shares": "25",
+          "fifo": [
+            {
+              "id": "9007199254740998",
+              "shares": 25
+            }
+          ]
+        },
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "75",
+          "fifo": [
+            {
+              "id": "9007199254740996",
+              "shares": 30
+            },
+            {
+              "id": "9007199254740997",
+              "shares": 45
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "80",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 4,
+      "hash": "ba764bbd4085d492",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894300,
+          "shares": "25",
+          "fifo": [
+            {
+              "id": "9007199254740998",
+              "shares": 25
+            }
+          ]
+        },
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "75",
+          "fifo": [
+            {
+              "id": "9007199254740996",
+              "shares": 30
+            },
+            {
+              "id": "9007199254740997",
+              "shares": 45
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "60",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 3,
+      "hash": "184555008a5d76f7",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "75",
+          "fifo": [
+            {
+              "id": "9007199254740996",
+              "shares": 30
+            },
+            {
+              "id": "9007199254740997",
+              "shares": 45
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "60",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "orders": 2,
+      "hash": "2467cbc1882d7cf3",
+      "levels": [
+        {
+          "side": "B",
+          "price4": 1894200,
+          "shares": "45",
+          "fifo": [
+            {
+              "id": "9007199254740997",
+              "shares": 45
+            }
+          ]
+        },
+        {
+          "side": "S",
+          "price4": 1894400,
+          "shares": "60",
+          "fifo": [
+            {
+              "id": "9007199254740994",
+              "shares": 60
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

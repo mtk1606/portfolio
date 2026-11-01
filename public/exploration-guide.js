@@ -1,5 +1,5 @@
 import {GUIDE_STEPS,cleanVisit} from './exploration-state.js';
-import {contextualHelp} from './exploration-quality.js';
+import {contextualHelp} from './exploration-quality.js?v=112';
 import {readMemory,remember} from './visitor-memory.js';
 import {audioSettings,setAudioSettings,playObjectSound} from './portfolio-audio.js';
 const $=s=>document.querySelector(s),visit=()=>cleanVisit(readMemory().explorationVisit),quiet=()=>matchMedia('(prefers-reduced-motion: reduce)').matches||document.body.classList.contains('no-motion');
@@ -16,6 +16,6 @@ function move(n){context=null;step=Math.max(0,Math.min(GUIDE_STEPS.length-1,n));
 $('#guide-next').onclick=()=>{if(step===GUIDE_STEPS.length-1){save({complete:true,step:0});step=0;close();}else move(step+1);};$('#guide-prev').onclick=()=>move(step-1);$('#guide-pause').onclick=()=>{paused=!paused;render();};$('#guide-restart').onclick=()=>{paused=false;move(0);};$('#guide-hint').onclick=()=>{if(!context?.hint)return;context={...context,text:context.hint,hint:null};render();};$('#guide-expand').onclick=()=>{const expanded=panel.classList.toggle('guide-expanded');$('#guide-expand').setAttribute('aria-expanded',String(expanded));$('#guide-expand').textContent=expanded?'Less':'More';};
 document.addEventListener('portfolio-context',e=>{const next=contextualHelp(e.detail);if(!next)return;latestContext=next;if(!active||paused||!$('#guide-follow').checked)return;context=next;step=next.step;save({step,complete:false});render(false);});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&active){paused=true;render();}});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&active&&!document.querySelector('dialog[open]'))close();});
-function enter(){if(ready)return;const threshold=$('#threshold');if(threshold&&!threshold.hidden)return;ready=true;$('#guide-button').hidden=false;if(!visit().invited){save({invited:true});invitation.hidden=false;}refreshButton();}
+function enter(){if(ready)return;const threshold=$('#threshold');if(threshold&&!threshold.hidden)return;ready=true;$('#guide-button').hidden=false;invitation.hidden=true;if(!visit().invited)save({invited:true});refreshButton();}
 document.addEventListener('portfolio-entered',enter);const threshold=$('#threshold');if(threshold)new MutationObserver(enter).observe(threshold,{attributes:true,attributeFilter:['hidden']});enter();refreshButton();
 document.addEventListener('portfolio-narration-caption',e=>{const el=$('#narration-captions');el.textContent=typeof e.detail==='string'?e.detail:'';el.hidden=!audioSettings().captions||!el.textContent;});

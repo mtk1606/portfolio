@@ -1,4 +1,5 @@
 from html.parser import HTMLParser
+import re
 from pathlib import Path
 from xml.sax.saxutils import escape
 from reportlab.platypus import SimpleDocTemplate,Paragraph,KeepTogether,PageBreak
@@ -9,13 +10,16 @@ from reportlab.pdfbase.ttfonts import TTFont
 pdfmetrics.registerFont(TTFont("MKRegular","/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"))
 pdfmetrics.registerFont(TTFont("MKBold","/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"))
 class Blocks(HTMLParser):
- def __init__(self):super().__init__();self.capture=None;self.depth=0;self.skip=0;self.buf=[];self.out=[]
+ def __init__(self):super().__init__();self.capture=None;self.depth=0;self.skip=0;self.buf=[];self.out=[];self.link=None
  def handle_starttag(self,tag,attrs):
   if tag in ['nav','style','footer']:self.skip+=1
   if self.skip:return
   if tag in ['h1','h2','h3','p','li'] and self.capture is None:self.capture=tag;self.buf=[]
   if tag=='br' and self.capture:self.buf.append(' | ')
+  if tag=='a' and self.capture:
+   self.link=dict(attrs).get('href');self.buf.append('\ufff0'+self.link+'\ufff1') if self.link else None
  def handle_endtag(self,tag):
+  if tag=='a' and self.capture and self.link:self.buf.append('\ufff2');self.link=None
   if tag in ['nav','style','footer']:self.skip=max(0,self.skip-1);return
   if tag==self.capture:self.out.append((tag,''.join(self.buf).strip()));self.capture=None
  def handle_data(self,text):
@@ -24,7 +28,8 @@ b=Blocks();b.feed(Path('public/resume.html').read_text());styles=getSampleStyleS
 for name,font,size,leading,color,before,after in [('MKName','MKBold',23,27,'#263128',0,10),('MKSection','MKBold',10,14,'#6c6047',14,8),('MKBody','MKRegular',9.2,13,'#252822',0,6),('MKRole','MKBold',11,14,'#263128',4,4)]:styles.add(ParagraphStyle(name=name,fontName=font,fontSize=size,leading=leading,textColor=HexColor(color),spaceBefore=before,spaceAfter=after))
 def clean(t):
  for a,z in [('↗',''),('↓',''),('—','-'),('–','-'),('’',"'"),('·',' | ')]:t=t.replace(a,z)
- return escape(t)
+ t=escape(t)
+ return re.sub('\ufff0(.*?)\ufff1',r'<link href="\1" color="#6c6047">',t).replace('\ufff2','</link>')
 story=[]
 for tag,text in b.out:
  if tag=='h2' and text=='SELECTED SYSTEMS & RESEARCH':story.append(PageBreak())

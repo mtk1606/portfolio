@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="602" viewBox="0 0 880 602" preserveAspectRatio="none" fill="none">
+<defs><filter id="grain"><feTurbulence baseFrequency=".7" numOctaves="3" seed="37" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><radialGradient id="edge"><stop offset=".68" stop-color="#493423" stop-opacity="0"/><stop offset="1" stop-color="#352319" stop-opacity=".2"/></radialGradient></defs>
+<rect width="880" height="602" fill="#fff" filter="url(#grain)" opacity=".055"/>
+<rect x="4" y="4" width="872" height="594" rx="24" stroke="#433024" stroke-opacity=".2" stroke-width="3"/>
+<rect width="880" height="602" fill="url(#edge)"/>
+<g stroke="#46392c" stroke-linecap="round" opacity=".5"><path d="m40 7 58 1m5 0 17-1m610 0 34 1m19 0 31 1M7 58l1 33m0 7 1 13m-2 339 1 19m2 12-1 39m0 4 1 9m860-446-1 31m1 10-2 13m1 302 1 52m-1 8-1 23M40 590l21 1m8 0 45 1m16 0 12-1m561 2 57-1m6-1 25 1m12-2 34-1" stroke-width="2.5"/><path d="m24 26 19-4m-20 7 9-2m803-3 18 9m-12-6 10 4M25 568l12 5m-11-1 18 6m792-3 17-8" stroke-width="1.2"/></g>
+<g stroke="#f8ebd5" opacity=".55"><path d="m40 9 59 1m632-1 33 1M10 60l1 30M42 588l25 1m639 1 53-1m75-13 16-7"/><path d="m71 102 17-3m-12 5 24-5m620 438 21-3m-15 6 31-4m-66 19 13-1m-466 49 20-3m-16 5 38-5" stroke-width=".7"/></g>
+<g stroke="#5b4835" opacity=".26" stroke-width=".8"><path d="m71 103 17-3m-12 5 24-5m620 439 21-3m-15 6 31-4m-66 19 13-1m-466 49 20-3m-16 5 38-5M35 386l3-16m1 12 3-9m770-222 8-1m-4 4 17-3"/></g>
+<g fill="#57422b" opacity=".35"><path d="m14 39 6-2 2 4-5 3-3-2Zm837 505 5-4 3 1-2 6-5 1ZM34 581l9 1 4 3-12 1Z"/></g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58" height="30" viewBox="0 0 58 30">
+ <defs><linearGradient id="paint" x2="0" y2="1"><stop stop-color="#e1bd72"/><stop offset=".45" stop-color="#c89e4e"/><stop offset="1" stop-color="#99763e"/></linearGradient><linearGradient id="metal" x2="0" y2="1"><stop stop-color="#dbd1b8"/><stop offset=".5" stop-color="#9e9a89"/><stop offset="1" stop-color="#d3c6a5"/></linearGradient></defs>
+ <g transform="rotate(-13 29 15)">
+ <path d="M5 9h7v12H5q-2 0-2-2v-8q0-2 2-2" fill="#ab7664" stroke="#7d5747" stroke-width=".7"/>
+ <path d="M10 9h7v12h-7z" fill="url(#metal)" stroke="#82775f" stroke-width=".6"/><path d="M12 10v10m3-10v10" stroke="#786f5c" stroke-width=".6"/>
+ <path d="M17 9h26v12H17z" fill="url(#paint)" stroke="#82643d" stroke-width=".7"/>
+ <path d="M18 12h24M18 18h24" stroke="#f4d695" stroke-opacity=".65" stroke-width=".7"/>
+ <path d="m43 9 12 6-12 6-1-4 2-2-2-2z" fill="#dfcba3" stroke="#a78e61" stroke-width=".6"/>
+ <path d="m51 13 5 2-5 2 .5-2z" fill="#403b32"/>
+ </g>
+</svg>

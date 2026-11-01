@@ -18,5 +18,14 @@
   "audience-quality.css",
   "mobile-polish.css",
   "speaker-materials.css",
-  "focus-refinement.css"
+  "focus-refinement.css",
+  "aster-replay.css",
+  "research-search.css",
+  "quick-route.css",
+  "consistency-audit.css",
+  "composition-refinement.css",
+  "journal-realism.css",
+  "receiver-arrival.css",
+  "receiver-photo.css",
+  "journal-rendered.css"
 ]

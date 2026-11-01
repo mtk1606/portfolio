@@ -1,0 +1,6 @@
+/* The QSE exercise and finish sheet must not inherit the old portal's short,
+   vertically centered flex viewport. Focus should never scroll hidden contents. */
+.arcade-cabinet .cabinet-screen:has(.qse-lane),.arcade-cabinet .cabinet-screen:has(.completion-scene){display:block;height:auto;min-height:440px;padding:24px;border-radius:12% / 5%}
+.cabinet-screen:has(.qse-lane) #cartridge-screen,.cabinet-screen:has(.completion-scene) #cartridge-screen{width:100%;min-width:0}
+.cabinet-screen:has(.completion-scene) .game-instruction{display:none}
+.cabinet-screen:has(.completion-scene) .completion-scene{min-height:0;padding-block:15px}
