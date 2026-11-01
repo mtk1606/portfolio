@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
+  <defs>
+    <filter id="pebble" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".36 .48" numOctaves="3" stitchTiles="stitch" seed="24" result="grain"/>
+      <feDiffuseLighting in="grain" surfaceScale="1.4" diffuseConstant=".7" lighting-color="#999794" result="raised">
+        <feDistantLight azimuth="225" elevation="42"/>
+      </feDiffuseLighting>
+      <feBlend in="SourceGraphic" in2="raised" mode="soft-light"/>
+    </filter>
+  </defs>
+  <path fill="#373839" filter="url(#pebble)" d="M0 0h240v240H0z"/>
+</svg>
