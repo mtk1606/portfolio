@@ -1,0 +1,24 @@
+/* The hero owns its full content height. Never let links spill into the next section. */
+body .hero{height:auto!important;min-height:0!important;max-height:none!important;box-sizing:border-box;display:flow-root;padding:clamp(96px,10vh,140px) 0 clamp(64px,8vh,96px)!important;margin:0 auto!important;overflow:visible}
+body .hero .hero-type{position:relative;box-sizing:border-box;width:min(780px,72%);max-width:100%;padding:0 0 0 clamp(24px,6.4vw,102px)!important;pointer-events:auto}
+body .hero .hero-type h1{margin:20px 0 28px;max-width:100%;line-height:.94!important}
+body .hero .hero-intro{max-width:51ch!important;margin:0!important;line-height:1.65!important}
+body .hero .hero-personal{display:block;margin-top:10px!important;max-width:52ch}
+body .hero .line-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:24px!important;padding:4px 0!important;box-sizing:border-box}
+body .hero .quick-route{position:static;display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px!important;margin:18px 0 0!important;padding:0!important;width:auto;max-width:100%;pointer-events:auto}
+body .hero .quick-route a{display:inline-flex;align-items:center;min-height:40px;padding:3px 0;box-sizing:border-box;white-space:nowrap}
+body .object-navigator{position:relative;clear:both;box-sizing:border-box;width:100%;max-width:1090px;margin:0 auto!important;padding:32px 35px 64px!important}
+body .navigator-intro{position:static;max-width:100%;margin:0 0 28px!important;padding:0 12px;transform:none}
+body .navigator-intro h2{line-height:1.2!important;margin:10px 0 12px!important}
+body .navigator-intro>p{font:16px/1.6 Georgia,serif;margin:0;max-width:65ch}
+body .navigation-instrument.receiver-photo{width:100%;max-width:880px;box-sizing:border-box;min-width:0;padding:0!important}
+body .receiver-photo .receiver-reading{min-width:0}.receiver-photo .receiver-caption{flex-wrap:wrap;row-gap:6px}.receiver-photo .receiver-presets,.receiver-photo .preset-keys{flex-wrap:wrap;row-gap:8px}
+/* Captions should wrap within their object instead of pushing it out of frame. */
+.receiver-photo .instrument-bottom>a{max-width:100%}.receiver-photo .instrument-bottom>a span{white-space:normal}.receiver-photo .instrument-bottom>p{min-width:0}
+@media(min-width:901px){body>header nav{min-width:0;gap:clamp(10px,1.3vw,18px)!important}body>header nav a{white-space:nowrap}body>header .header-controls{flex-shrink:0}body .pixel-orbit{top:9%;bottom:auto;max-width:49%;pointer-events:none}body .pixel-orbit button{pointer-events:auto}}
+@media(min-width:901px) and (max-width:1150px){body>header{padding-inline:24px!important}body>header nav{gap:10px!important}body>header nav a{font-size:12px!important}body .hero .hero-type{width:68%;padding-left:40px!important}body .hero .hero-type h1{font-size:clamp(50px,6.1vw,72px)!important}body .hero .hero-intro{font-size:16px!important}.header-controls{gap:8px!important}}
+@media(max-width:900px){body .hero{padding:72px 0 56px!important}body .hero .hero-type{width:100%;padding:0 32px!important}body .hero .hero-intro{max-width:44ch!important}body .hero .hero-type h1{font-size:clamp(48px,8.4vw,76px)!important}body .object-navigator{padding:24px 28px 52px!important}body .navigator-intro{padding:0;margin-bottom:20px!important}body .pixel-orbit{display:none}}
+@media(max-width:700px){body .hero{padding-top:42px!important;padding-bottom:48px!important}body .hero .hero-type{padding-inline:24px!important}body .hero .hero-type h1{font-size:clamp(42px,11.5vw,68px)!important;line-height:1!important;letter-spacing:-.055em!important;margin:18px 0 24px}body .hero .hero-intro{font-size:15px!important;max-width:100%!important}body .hero .hero-personal{font-size:12px!important}body .hero .quick-route{gap:8px 22px!important}body .object-navigator{padding:22px 24px 48px!important}body .navigator-intro h2{font-size:27px!important}body .navigator-intro>p{font-size:15px}.receiver-photo .receiver-presets{gap:8px}.receiver-photo .preset-keys{gap:8px 16px}}
+/* Give the closing audio control a clear place instead of an empty row. */
+#contact.section{position:relative}#contact>.eyebrow{padding-right:64px}#contact>.object-speaker{position:absolute;right:5.5%;top:57px;margin:0;min-width:44px;min-height:44px}#contact .closing-links{margin-top:24px}#copy-email{font-size:11px!important;line-height:1.4;min-height:40px;padding:8px 0;cursor:pointer}
+@media(max-width:700px){#contact>.object-speaker{top:34px;right:24px}}
