@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {navigatePortfolio} from '../public/portfolio-navigation.js';
+const calls=[];const heading={getClientRects:()=>[{}],setAttribute:(...a)=>calls.push(['attribute',...a]),focus:a=>calls.push(['focus',a])};
+const make=(top,bottom)=>({getBoundingClientRect:()=>({top,bottom,height:bottom-top}),querySelector:()=>heading,querySelectorAll:()=>[{getClientRects:()=>[]},heading],scrollIntoView:o=>calls.push(['scroll',o])});
+const section=make(300,1200),object=make(400,1000),intro=make(300,380),header=make(0,80);
+let quiet=false;const env={innerWidth:1280,innerHeight:900,matchMedia:()=>({matches:quiet}),history:{state:null,pushState(state,unused,href){this.state=state;calls.push(['url',href]);}},document:{body:{classList:{contains:()=>false}},querySelector:s=>({'#highlights':section,'.navigation-instrument':object,'.navigator-intro':intro,'body>header':header,'#work':section,'.notebook':object}[s])}};
+assert.equal(navigatePortfolio('#highlights',env),true);assert.deepEqual(calls.find(x=>x[0]==='focus'),['focus',{preventScroll:true}]);assert.equal(calls.filter(x=>x[0]==='url').length,1);
+calls.length=0;navigatePortfolio('#highlights',env);assert.equal(calls.some(x=>x[0]==='url'),false,'same target does not add redundant history');
+quiet=true;calls.length=0;navigatePortfolio('#work',env);assert.equal(calls.find(x=>x[0]==='scroll')[1].behavior,'instant');
+calls.length=0;assert.equal(navigatePortfolio('https://example.com',env),false);assert.equal(calls.length,0,'external links remain native');
+console.log('Portfolio navigation: one history update, focus without a second jump, reduced motion and external-link passthrough pass.');

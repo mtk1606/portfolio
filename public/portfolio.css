@@ -925,3 +925,7 @@ body .receiver-photo .receiver-reading{min-width:0}.receiver-photo .receiver-cap
 /* Give the closing audio control a clear place instead of an empty row. */
 #contact.section{position:relative}#contact>.eyebrow{padding-right:64px}#contact>.object-speaker{position:absolute;right:5.5%;top:57px;margin:0;min-width:44px;min-height:44px}#contact .closing-links{margin-top:24px}#copy-email{font-size:11px!important;line-height:1.4;min-height:40px;padding:8px 0;cursor:pointer}
 @media(max-width:700px){#contact>.object-speaker{top:34px;right:24px}}
+/* Keyboard focus follows navigation; the radio introduction has breathing room. */
+.navigator-intro{scroll-margin-top:18px}.hero .quick-route a:focus-visible,.receiver-photo .preset-keys>:is(a,button):focus-visible{outline:2px solid #d7b986!important;outline-offset:5px}
+/* Keep the complete control label clickable, including its SVG icon. */
+.object-speaker svg{pointer-events:none}.receiver-photo .receiver-instruction{color:#b8aa90}.receiver-photo .preset-engraving,.receiver-photo .preset-engraving>b{color:#aa9b82!important}
