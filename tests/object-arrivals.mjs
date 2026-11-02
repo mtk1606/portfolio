@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {installObjectArrivals,arrivalTargets} from '../public/object-arrivals.js';
+const events=new Map(),saved=new Map(),animations=[];let observer,reduced=false,motionChange;
+const node=()=>({dataset:{},classList:{add(){},remove(){},contains(){return false}},children:[],append(n){this.children.push(n)},setAttribute(){},remove(){this.removed=true},contains(t){return t===this},querySelector(){return node()},animate(frames,options){let resolve;const finished=new Promise(r=>resolve=r);const a={frames,options,finished,cancel(){this.cancelled=true;resolve()}};animations.push(a);return a}});
+const objects=arrivalTargets.map(()=>node());
+const doc={body:node(),hidden:false,querySelector:s=>s==='#threshold'?{hidden:false}:objects[arrivalTargets.findIndex(x=>x[1]===s)],createElement:node,addEventListener:(k,f)=>events.set(k,f),removeEventListener:(k)=>events.delete(k)};
+const win={matchMedia:()=>({get matches(){return reduced},addEventListener:(k,f)=>motionChange=f,removeEventListener(){}}),IntersectionObserver:class{constructor(fn){this.fn=fn;this.observed=[];observer=this}observe(n){this.observed.push(n)}disconnect(){this.disconnected=true}},MutationObserver:class{observe(){}disconnect(){}}};
+const storage={getItem:k=>saved.get(k),setItem:(k,v)=>saved.set(k,v)};
+const stop=installObjectArrivals({doc,win,storage});assert.equal(observer.observed.length,0,'intro must not consume arrivals');events.get('portfolio-entered')();assert.equal(observer.observed.length,4);
+const reveal=i=>observer.fn([{target:objects[i],isIntersecting:true,intersectionRatio:.4}]);
+reveal(1);assert.equal(objects[1].children.length,4,'cover and three decorative pages');assert.ok(animations.every(a=>a.options.duration+a.options.delay<=1200),'short nonblocking choreography');
+events.get('focusin')({target:objects[1]});assert.ok(animations.every(a=>a.cancelled));assert.ok(objects[1].children.every(p=>p.removed),'interaction removes sheets');const count=animations.length;reveal(1);assert.equal(animations.length,count,'once per visit');
+reveal(0);reduced=true;motionChange();assert.ok(animations.every(a=>a.cancelled),'live reduced-motion change cancels animation');const before=animations.length;reveal(2);assert.equal(animations.length,before,'reduced motion never animates');
+stop();assert.ok(observer.disconnected);assert.equal(JSON.parse(saved.get('mk-object-arrivals-v1')).length,3);
+console.log('Object arrivals: intro deferral, once-only, duration limits, interaction cleanup and reduced-motion cancellation pass.');
