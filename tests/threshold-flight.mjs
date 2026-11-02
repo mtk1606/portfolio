@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {gravityProgress,wordFlight} from '../public/threshold-flight.js';
+import {gravityProgress,wordFlight,tidalState} from '../public/threshold-flight.js';
 assert.equal(gravityProgress(-1),0);
 assert.equal(gravityProgress(2),1);
 assert.ok(gravityProgress(.5)<.12,'first half stays slow');
@@ -15,3 +15,10 @@ for(const [dx,dy] of [[600,400],[-600,-400],[0,400],[0,0]]){
  assert.ok(Math.abs(Number(target[1])-dx)<1e-8&&Math.abs(Number(target[2])-dy)<1e-8,'all paths converge exactly at the lens centre');
 }
 console.log('Threshold typography: accelerating travel, finite paths and exact centre convergence passed. WebGL rendering is not simulated.');
+
+for(const [dx,dy] of [[500,0],[0,500],[-300,400]]){
+ const early=tidalState(dx,dy,.3),near=tidalState(dx,dy,.96);
+ assert.ok(near.stretch/near.width>early.stretch/early.width*8,'tidal anisotropy grows strongly toward the centre');
+ assert.ok(Math.abs(near.angle-Math.atan2(dy,dx)*180/Math.PI)<1e-8,'stretch axis points toward the hole');
+ const end=tidalState(dx,dy,1);assert.equal(end.stretch,0);assert.equal(end.width,0);assert.equal(end.opacity,0);
+}
