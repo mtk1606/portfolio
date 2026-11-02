@@ -970,3 +970,16 @@ body .receiver-photo .receiver-reading{min-width:0}.receiver-photo .receiver-cap
 #threshold #skip-flight{z-index:12}
 @media(prefers-reduced-motion:reduce){#threshold .threshold-suction{display:none}#threshold.arrival-flash{transition:none}}
 body.no-motion #threshold .threshold-suction{display:none}
+
+/* object-arrivals.css */
+/* Arrivals decorate real objects; no content is hidden while observers load. */
+.object-arriving{transform-origin:50% 55%}
+.arrival-leaf,.arrival-paper-fold,.arrival-radio-glow{position:absolute;display:block;pointer-events:none!important;user-select:none;opacity:0}
+.arrival-leaf{left:50%;top:5%;width:44%;height:89%;z-index:7;transform-origin:0 50%;background:#ddd6c2 url('/assets/research-loose-paper-v1.webp') center/100% 100%;border-radius:0 5px 6px 0;box-shadow:3px 3px 9px #30251555;backface-visibility:visible;border-right:1px solid #a99b7c60}
+.arrival-leaf:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#30281740,transparent 17%,#fff8e425 65%,#30281725);border-radius:inherit}
+.arrival-cover{background:linear-gradient(110deg,#252625,#41413c 45%,#292a28);border:2px solid #544e42;outline:1px dashed #9c8b6577;outline-offset:-9px;border-radius:0 8px 8px 0}
+.arrival-paper-fold{left:48%;top:1%;width:6%;height:98%;z-index:4;transform-origin:center;background:linear-gradient(90deg,transparent,#3c302532 44%,#fff8e16b 53%,transparent)}
+.arrival-radio-glow{left:59%;top:30%;width:32%;height:14%;z-index:1;background:radial-gradient(ellipse,#eab75b5c,transparent 72%);mix-blend-mode:screen}
+@media(prefers-reduced-motion:reduce){.arrival-leaf,.arrival-paper-fold,.arrival-radio-glow{display:none!important}}
+body.no-motion :is(.arrival-leaf,.arrival-paper-fold,.arrival-radio-glow){display:none!important}
+@media(max-width:700px){.arrival-leaf{display:none!important}}
