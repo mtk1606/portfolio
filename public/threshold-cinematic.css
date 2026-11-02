@@ -1,0 +1,9 @@
+/* The original ray-traced scene stays intact; this layer directs its typography. */
+.threshold-suction-word{backface-visibility:hidden;contain:layout style;transform-origin:center;white-space:pre}
+#threshold.arrival-flash{opacity:1;background:#000;transition:opacity .85s ease}
+#threshold.arrival-flash.departed{opacity:0}
+#threshold.arrival-flash .threshold-suction{visibility:hidden}
+#threshold.gravity-absorbing #journey-status{visibility:hidden}
+#threshold #skip-flight{z-index:12}
+@media(prefers-reduced-motion:reduce){#threshold .threshold-suction{display:none}#threshold.arrival-flash{transition:none}}
+body.no-motion #threshold .threshold-suction{display:none}

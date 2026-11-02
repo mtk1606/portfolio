@@ -959,3 +959,14 @@ body .receiver-photo .receiver-reading{min-width:0}.receiver-photo .receiver-cap
 .notebook .search-kicker,.notebook .discovery-kicker{color:#77705f}
 @media(min-width:901px) and (max-height:800px){.notebook.journal-rendered .discovery-sheet{padding:17px 19px 20px!important}.notebook .search-experiment h4{font-size:25px!important}.notebook .search-invitation{font-size:17px!important}}
 @media(max-width:700px){.notebook.journal-rendered .discovery-sheet{padding:22px 19px!important}}
+
+/* threshold-cinematic.css */
+/* The original ray-traced scene stays intact; this layer directs its typography. */
+.threshold-suction-word{backface-visibility:hidden;contain:layout style;transform-origin:center;white-space:pre}
+#threshold.arrival-flash{opacity:1;background:#000;transition:opacity .85s ease}
+#threshold.arrival-flash.departed{opacity:0}
+#threshold.arrival-flash .threshold-suction{visibility:hidden}
+#threshold.gravity-absorbing #journey-status{visibility:hidden}
+#threshold #skip-flight{z-index:12}
+@media(prefers-reduced-motion:reduce){#threshold .threshold-suction{display:none}#threshold.arrival-flash{transition:none}}
+body.no-motion #threshold .threshold-suction{display:none}
