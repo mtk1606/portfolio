@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
-import {POKER_CASES,YEAR_CASES,INITIAL_WEIGHTS,portfolioResult,gridComparison,callThreshold,foldThreshold,callEV,bluffEV} from '../public/decision-table-data.js';
+import {POKER_CASES,pokerOutcome,YEAR_CASES,INITIAL_WEIGHTS,portfolioResult,gridComparison,callThreshold,foldThreshold,callEV,bluffEV} from '../public/decision-table-data.js';
 assert.equal(POKER_CASES.length,3);assert.equal(YEAR_CASES.length,3);
-for(const p of POKER_CASES){const cards=[...p.hole,...p.board,...p.opponent];assert.equal(new Set(cards).size,9,'No card can occur twice');assert.ok(p.sources.length);assert.ok(p.actions.some(a=>a[0]===p.actual));for(const [id]of p.reasons)assert.ok(p.feedback[id]);assert.ok(p.pot>=p.toCall);}
+for(const p of POKER_CASES){const cards=[...p.hole,...p.board,...p.opponent];assert.equal(new Set(cards).size,9,'No card can occur twice');assert.ok(p.sources.length);assert.ok(p.actions.some(a=>a[0]===p.actual));assert.equal(p.actions.length,2);for(const [id]of p.actions){const r=pokerOutcome(p,id);assert.equal(r.win,id===p.winningAction);assert.ok(r.text);}assert.throws(()=>pokerOutcome(p,'raise'),RangeError);if(p.pot!==null)assert.ok(p.pot>=p.toCall);}
 assert.equal(callThreshold(4600000,2800000),28/74);
 assert.ok(Math.abs(callEV(4600000,2800000,28/74))<1e-8);
 assert.ok(Math.abs(bluffEV(1800000,2800000,foldThreshold(1800000,2800000)))<1e-8);

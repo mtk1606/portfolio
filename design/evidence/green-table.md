@@ -23,3 +23,7 @@ The 2003 poker amounts are marked as a rounded recreation with a 1.8m pot before
 - Pure logic: unique cards, action validity, call/bluff break-even equations, all-in limiting cases, weighted returns, capital conservation, 286-portfolio grid and invalid allocations.
 - Room geometry: Three.js initialization with the new table, decision camera/side-panel state, and existing room regression suite; renderer drawing is stubbed.
 - Browser has no WebGL, so the room's physical table appearance is not visually verified in this environment. Both games are playable through the directory fallback.
+
+## Simplified poker revision
+
+Poker now offers one final action with two immediate buttons, no bet-size, rationale form, probability estimate, EV panel or solver language. Three distinct historical hands: Moneymaker–Farha (bet/check), Negreanu–Hansen (call/fold), Chan–Seidel (call/fold). All six choices have explicit fixed-replay outcomes. A saved-chip fold is labeled as avoiding a losing final call, never as winning the pot. The original play is separately reported. The 1988 exact pot is omitted instead of using invented chips. Source for 2006: https://www.cardplayer.com/poker-news/1640563-daniel-negreanu-gus-hansen-break-down-iconic-high-stakes-poker-hand . Historical allocation game unchanged.
