@@ -1,5 +1,5 @@
 // Three direct stops on the existing receiver; no tour state or automatic progression.
-export const FAST_ROUTE={engineering:{target:'#flagship-record',label:'ASTER engineering record'},production:{target:'#press-headline',label:'BMO production outcomes'},resume:{href:'/resume.html',label:'Résumé'}};
+export const FAST_ROUTE={engineering:{target:'#flagship-record',label:'ASTER engineering record'},production:{target:'#press-headline',label:'BMO production outcomes'},resume:{href:'/assets/mohamed-el-khoudimi-resume.pdf',label:'Resume'}};
 export function mountQuickRoute(root=document){
  const engineering=root.querySelector('[data-quick-stop="engineering"]');
  const production=root.querySelector('[data-quick-stop="production"]');
