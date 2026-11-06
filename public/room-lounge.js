@@ -1,3 +1,4 @@
+import {buildReadingStand} from './room-library.js';
 // Hand-built furnishings and original television loops. No external media downloads.
 export function buildLounge(T,scene,box,cyl,mat,brass){
  const leather=mat('#553d35',.88),walnut=mat('#38251f'),dark=mat('#11151b'),linen=mat('#a99b83'),coatMat=mat('#252832');
@@ -18,8 +19,7 @@ export function buildLounge(T,scene,box,cyl,mat,brass){
  // Personal objects: film tickets and notebooks drawn as texture, not stock imagery.
  function paper(w,h,x,y,z,paint,flat=false){const c=document.createElement('canvas');c.width=768;c.height=512;paint(c.getContext('2d'));const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;const m=new T.Mesh(new T.PlaneGeometry(w,h),new T.MeshBasicMaterial({map:t}));m.position.set(x,y,z);if(flat)m.rotation.x=-Math.PI/2;scene.add(m);return m}
  paper(1.4,.8,-5.6,1.235,10.4,c=>{c.fillStyle='#cfbb91';c.fillRect(0,0,768,512);c.fillStyle='#292726';c.font='27px monospace';c.fillText('AFTER HOURS / DOUBLE FEATURE',35,65);c.font='48px Georgia';c.fillText('Interstellar',35,190);c.fillText('Back to the Future',35,290);c.font='22px monospace';c.fillText('TIME · CURIOSITY · POSSIBILITY',35,430)},true).rotation.z=.12;
- box(2.5,1.8,.08,-8,3.9,-4.2,brass);paper(2.34,1.64,-8,3.9,-4.14,c=>{c.fillStyle='#1d241f';c.fillRect(0,0,768,512);c.strokeStyle='#bbab83';c.lineWidth=3;c.strokeRect(90,70,590,340);c.beginPath();c.moveTo(385,70);c.lineTo(385,410);c.moveTo(90,245);c.lineTo(680,245);c.stroke();c.fillStyle='#e7d8b5';c.font='36px Georgia';c.fillText('Outside the frame.',185,470)});
- paper(2.7,.58,-8,2.06,-3.63,c=>{c.fillStyle='#28261f';c.fillRect(0,0,768,512);c.fillStyle='#d7cba7';c.font='31px monospace';c.fillText('SYSTEMS  /  QUESTIONS  /  FIELD NOTES',25,260)});
+ buildReadingStand(T,scene,box,mat,brass);
  paper(.9,.62,-4.94,1.32,6.56,c=>{c.fillStyle='#dbcca8';c.fillRect(0,0,768,512);c.fillStyle='#544730';c.font='italic 55px Georgia';c.fillText('For the difficult days.',35,160);c.font='38px Georgia';c.fillText('Keep your own frame of mind.',35,320)},true).rotation.z=-.12;
  // Low walnut hi-fi cabinet, loudspeakers and a spinning record.
  const stereo=new T.Group();stereo.position.set(8.2,0,-2.8);scene.add(stereo);box(3.6,1.4,1.45,0,1.05,0,walnut,stereo);for(const x of [-1.4,1.4])box(.07,.4,.8,x,.2,0,brass,stereo);box(1.75,.48,.07,0,1.17,.77,brass,stereo);box(.8,.16,.03,-.23,1.21,.82,dark,stereo);for(const x of [.44,.7])cyl(.095,.095,.08,x,1.19,.84,dark,stereo).rotation.x=Math.PI/2;
