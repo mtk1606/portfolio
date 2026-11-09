@@ -19,4 +19,4 @@ nodes.get('#motion').onclick();advance();const cloud=renderedScene.getObjectByNa
 
 assert.ok(renderedScene.getObjectByName('The green table / decision games'));mod.namespace.enter('decision');assert.equal(nodes.get('#panel').hidden,true,'decision camera does not show the side panel');mod.namespace.enter('room');console.log('Green table: scene geometry and decision mode integration passed.');
 
-assert.ok(renderedScene.getObjectByName('The reading stand / books and cinema'));
+assert.ok(renderedScene.getObjectByName('The collection shelves / books, DVDs and games'));

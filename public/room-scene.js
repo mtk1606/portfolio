@@ -92,7 +92,6 @@ const cableCurve=new T.CatmullRomCurve3([new T.Vector3(-1.8,2.7,-.7),new T.Vecto
 const pen=box(.035,.035,.65,2.3,2.68,.3,brass,computer);pen.rotation.y=.3;
 // A coffee cup with an actual curved handle.
 cyl(.16,.12,.25,1.65,2.7,1,ivory,computer);cyl(.133,.133,.007,1.65,2.829,1,mat('#302219'),computer);const handle=new T.Mesh(new T.TorusGeometry(.10,.028,8,18),ivory);handle.position.set(1.82,2.72,1);computer.add(handle);
-const shelf=new T.Group();shelf.position.set(-8,0,-4);scene.add(shelf);box(3.3,2.8,.7,0,1.4,0,wood,shelf);for(const y of [.1,1.3,2.7])box(3.5,.1,1,0,y,.2,brass,shelf);const covers=[mat('#6a3430'),mat('#344650'),mat('#665139'),mat('#938773')];for(let i=0;i<13;i++){const h=.7+random()*.4;box(.14,.0+h,.65,-1.35+i*.21,1.4+h/2,.33,covers[i%4],shelf);box(.15,.018,.015,-1.35+i*.21,1.6,.665,brass,shelf)}
 // Tiny motes only in the desk light; no starfield inside the room.
 const dustPositions=new Float32Array(150);for(let i=0;i<50;i++){dustPositions[i*3]=-7+random()*5;dustPositions[i*3+1]=1+random()*5;dustPositions[i*3+2]=-2+random()*5}const dustGeo=new T.BufferGeometry();dustGeo.setAttribute('position',new T.BufferAttribute(dustPositions,3));const dust=new T.Points(dustGeo,new T.PointsMaterial({color:'#d7b07c',size:.014,transparent:true,opacity:.35,depthWrite:false}));scene.add(dust);
 const lounge=buildLounge(T,scene,box,cyl,mat,brass);const clubhouse=buildClubhouse(T,scene,box,cyl,mat);finishRoom(T,scene);const gothic=buildGothicStudy(T,scene,box,cyl,mat);
