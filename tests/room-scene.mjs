@@ -20,3 +20,4 @@ nodes.get('#motion').onclick();advance();const cloud=renderedScene.getObjectByNa
 assert.ok(renderedScene.getObjectByName('The green table / decision games'));mod.namespace.enter('decision');assert.equal(nodes.get('#panel').hidden,true,'decision camera does not show the side panel');mod.namespace.enter('room');console.log('Green table: scene geometry and decision mode integration passed.');
 
 assert.ok(renderedScene.getObjectByName('The collection shelves / books, DVDs and games'));
+mod.namespace.enter('mementos');advance();for(const y of [.5,5.7]){const p=new Three.Vector3(-8,y,-4).project(renderedCamera);assert.ok(Math.abs(p.y)<.95,'collection camera keeps both the top and bottom shelf in view');}console.log('Full collection cabinet framing passed.');

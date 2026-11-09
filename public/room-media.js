@@ -19,7 +19,7 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)score.suspe
 // Sitting is deliberately quiet: retain the soundtrack, let the interface recede.
 let seated=false,restTimer=0;
 function wake(){if(!seated)return;document.body.classList.remove('lounge-resting');clearTimeout(restTimer);restTimer=setTimeout(()=>{if(seated&&!['BUTTON','A','INPUT','SELECT'].includes(document.activeElement?.tagName))document.body.classList.add('lounge-resting')},4200)}
-document.addEventListener('room-mode',e=>{seated=e.detail==='sofa';clearTimeout(restTimer);document.body.classList.remove('lounge-resting');$('#rest-cue').hidden=!seated;$('#mementos-panel').hidden=e.detail!=='mementos';if(seated){$('#hint').textContent='No next task. Just the view.';$('#room-canvas').focus({preventScroll:true});wake()}if(e.detail==='mementos')$('#hint').textContent='A few things that make this place mine.'});
+document.addEventListener('room-mode',e=>{seated=e.detail==='sofa';clearTimeout(restTimer);document.body.classList.remove('lounge-resting');$('#rest-cue').hidden=!seated;$('#mementos-panel').hidden=e.detail!=='mementos';if(seated){$('#hint').textContent='No next task. Just the view.';$('#room-canvas').focus({preventScroll:true});wake()}if(e.detail==='mementos')$('#hint').textContent='Books, DVDs, and games. Pick something from the shelf.'});
 for(const name of ['pointermove','pointerdown','keydown','focusin'])document.addEventListener(name,wake,{passive:true});
 
 let spatial=true;$('#spatial-sound').onchange=e=>{spatial=e.target.checked;if(!spatial)score.setSpatial(0,0)};
