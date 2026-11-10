@@ -4,13 +4,13 @@ import {recordPokerChoice,pokerRunScore} from './rivalry-core.js';
 let pokerRun={};
 const $=s=>document.querySelector(s),dialog=document.createElement('dialog');
 dialog.id='decision-table';dialog.setAttribute('aria-labelledby','decision-title');
-dialog.innerHTML=`<header class="decision-top"><a href="#" data-table-home aria-label="Choose a table game">MK / THE GREEN TABLE</a><button type="button" data-table-close>↖ Back to room</button></header><div class="decision-body"></div><footer class="decision-foot">FICTIONAL CHIPS · REAL QUESTIONS · NO TIMER</footer>`;
+dialog.innerHTML=`<header class="decision-top"><a href="#" data-table-home aria-label="Choose a table game">MTK / THE GREEN TABLE</a><button type="button" data-table-close>↖ Back to room</button></header><div class="decision-body"></div><footer class="decision-foot">FICTIONAL CHIPS · REAL QUESTIONS · NO TIMER</footer>`;
 document.body.append(dialog);const body=dialog.querySelector('.decision-body');let opener=null,view='home',caseIndex=0,yearIndex=0,pokerAnswer=null,yearAnswer=null,clues=1,weights={...INITIAL_WEIGHTS};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(n);
 const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n);
 const pct=n=>(n>0?'+':'')+n.toFixed(2)+'%';
-const card=(v,hidden=false)=>{if(hidden)return '<span class="dt-card card-back" role="img" aria-label="Hidden opponent card"><i>MK</i></span>';const suit={s:'♠',h:'♥',d:'♦',c:'♣'}[v.slice(-1)],rank=v.slice(0,-1).replace('T','10');return `<span class="dt-card ${/[hd]$/.test(v)?'red':''}" role="img" aria-label="${rank} of ${{s:'spades',h:'hearts',d:'diamonds',c:'clubs'}[v.slice(-1)]}"><b>${rank}</b><span>${suit}</span><i>${rank}${suit}</i></span>`;};
+const card=(v,hidden=false)=>{if(hidden)return '<span class="dt-card card-back" role="img" aria-label="Hidden opponent card"><i>MTK</i></span>';const suit={s:'♠',h:'♥',d:'♦',c:'♣'}[v.slice(-1)],rank=v.slice(0,-1).replace('T','10');return `<span class="dt-card ${/[hd]$/.test(v)?'red':''}" role="img" aria-label="${rank} of ${{s:'spades',h:'hearts',d:'diamonds',c:'clubs'}[v.slice(-1)]}"><b>${rank}</b><span>${suit}</span><i>${rank}${suit}</i></span>`;};
 function records(){const r=readMemory().decisionTableRecords;return r&&typeof r==='object'&&!Array.isArray(r)?r:{};}
 function mark(id,kind){remember('decisionTableRecords',{...records(),[id]:{kind,date:new Date().toISOString()}});}
 function focusTitle(){body.querySelector('h1,h2')?.focus({preventScroll:true});dialog.scrollTop=0;}

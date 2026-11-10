@@ -13,7 +13,7 @@ $('#wire-pause').onclick=()=>{const p=$('.market-wire').classList.toggle('paused
 // Object-specific audio is owned by portfolio-audio and portfolio-touch.
 function cue(kind){if(kind==='win')playObjectSound('discovery');}
 export function setInterfaceSound(enabled){setAudioSettings({objects:enabled});}
-const baseTitle=document.title;document.addEventListener('visibilitychange',()=>{$('#favicon').href=document.hidden?'assets/favicon-away.svg':'assets/favicon.svg';document.title=document.hidden?'A thought in progress. — MK':baseTitle});
+const baseTitle=document.title;document.addEventListener('visibilitychange',()=>{$('#favicon').href=document.hidden?'assets/favicon-away.svg':'/assets/favicon-mtk-v1.png';document.title=document.hidden?'A thought in progress. — MTK':baseTitle});
 let returnFocus=null;function openDialog(d){if(d.open)return;returnFocus=document.activeElement;d.showModal();cue('open')}
 $$('dialog').forEach(d=>{const closeButton=d.querySelector('.close');if(closeButton)closeButton.onclick=()=>d.close();d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}});d.addEventListener('close',()=>{cue('close');if(returnFocus?.isConnected)returnFocus.focus()})});
 $('#copy-email').onclick=async()=>{try{await navigator.clipboard.writeText('elkhoudimimohamed@gmail.com');toast('Email copied. Start a conversation.')}catch{toast('elkhoudimimohamed@gmail.com')}};

@@ -1,0 +1,7 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';
+const home=fs.readFileSync('portfolio.html','utf8'),room=fs.readFileSync('public/after-hours.html','utf8');
+for(const [html,url] of [[home,'https://mohamedelkhoudimi.com/'],[room,'https://mohamedelkhoudimi.com/after-hours.html']]){assert.equal((html.match(/rel="canonical"/g)||[]).length,1);assert.ok(html.includes('rel="canonical" href="'+url+'"'));for(const key of ['og:title','og:description','og:image','og:image:alt','og:url'])assert.equal((html.match(new RegExp('property="'+key+'"','g'))||[]).length,1);assert.ok(html.includes('name="twitter:card" content="summary_large_image"'));assert.ok(!/\bMK\b/.test(html),'Visible branding uses MTK');assert.ok(html.includes('https://mohamedelkhoudimi.com/assets/mtk-share-v1.png'));}
+const ld=JSON.parse(home.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);assert.equal(ld['@graph'][0].alternateName,'MTK');
+const img=fs.readFileSync('public/assets/mtk-share-v1.png');assert.equal(img.readUInt32BE(16),1200);assert.equal(img.readUInt32BE(20),630);
+const robots=fs.readFileSync('public/robots.txt','utf8');assert.ok(robots.includes('Sitemap: https://mohamedelkhoudimi.com/sitemap.xml'));assert.ok(!robots.includes('Disallow: /\n'));assert.ok(fs.readFileSync('public/sitemap.xml','utf8').includes('https://mohamedelkhoudimi.com/after-hours.html'));
+console.log('MTK branding, canonical URLs, Open Graph/Twitter cards, share image, structured data, robots and sitemap passed.');

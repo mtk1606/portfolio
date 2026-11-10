@@ -1,6 +1,6 @@
 import {navigatePortfolio} from './portfolio-navigation.js?v=141';
 // Long notes open on their own paper sheet instead of stretching physical objects.
-const dialog=document.createElement('dialog');dialog.className='reading-view';dialog.setAttribute('aria-labelledby','reading-title');dialog.innerHTML='<header><span>MK / FROM THE WORKBENCH</span><button type="button" aria-label="Close reading view">Close ×</button></header><h2 id="reading-title"></h2><div class="reading-body"></div>';document.body.append(dialog);
+const dialog=document.createElement('dialog');dialog.className='reading-view';dialog.setAttribute('aria-labelledby','reading-title');dialog.innerHTML='<header><span>MTK / FROM THE WORKBENCH</span><button type="button" aria-label="Close reading view">Close ×</button></header><h2 id="reading-title"></h2><div class="reading-body"></div>';document.body.append(dialog);
 let opener=null;
 dialog.querySelector('button').onclick=()=>dialog.close();
 dialog.addEventListener('close',()=>opener?.focus({preventScroll:true}));
